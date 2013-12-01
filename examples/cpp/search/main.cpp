@@ -8,13 +8,13 @@
 // Copyright 2012      Dennis Nienhüser <earthwings@gentoo.org>
 //
 
-#include <QApplication>
-#include <QDebug>
+#include <QtGui/QApplication>
+#include <QtCore/QDebug>
 
 #include <marble/MarbleWidget.h>
 #include <marble/MarbleModel.h>
-#include <marble/SearchRunnerManager.h>
-#include <GeoDataPlacemark.h>
+#include <marble/MarbleRunnerManager.h>
+#include <marble/GeoDataPlacemark.h>
 
 using namespace Marble;
 
@@ -23,7 +23,8 @@ int main(int argc, char** argv)
     QApplication app( argc, argv );
 
     MarbleModel model;
-    SearchRunnerManager manager( &model );
+    MarbleRunnerManager manager( model.pluginManager() );
+    manager.setModel( &model );
 
     QVector<GeoDataPlacemark*> searchResult = manager.searchPlacemarks( "Karlsruhe" );
     foreach( const GeoDataPlacemark* placemark, searchResult ) {

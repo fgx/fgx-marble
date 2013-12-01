@@ -5,11 +5,7 @@ INCLUDE_DIRECTORIES(
  ${CMAKE_CURRENT_BINARY_DIR}
  ${QT_INCLUDE_DIR}
 )
-if( QT4_FOUND )
-  INCLUDE(${QT_USE_FILE})
-else()
- INCLUDE_DIRECTORIES(${Qt5WebKitWidgets_INCLUDE_DIRS})
-endif()
+INCLUDE(${QT_USE_FILE})
 
 set( weather_SRCS WeatherData.cpp
                   WeatherItem.cpp
@@ -28,8 +24,8 @@ set( weather_SRCS WeatherData.cpp
                   GeoNamesWeatherItem.cpp )
 set( weather_UI WeatherConfigWidget.ui )
 
-qt_wrap_ui( weather_SRCS ${weather_UI} )
-qt_add_resources( weather_SRCS weather.qrc )
+qt4_wrap_ui( weather_SRCS ${weather_UI} )
+qt4_add_resources( weather_SRCS weather.qrc )
 
 marble_add_plugin( Weather ${weather_SRCS} )
 target_link_libraries( Weather ${QT_QTWEBKIT_LIBRARY} )

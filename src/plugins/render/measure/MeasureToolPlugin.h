@@ -23,10 +23,10 @@
 #include "MarbleWidget.h"
 #include "MarbleWidgetPopupMenu.h"
 
-#include <QObject>
-#include <QFont>
-#include <QPen>
-#include <QAction>
+#include <QtCore/QObject>
+#include <QtGui/QFont>
+#include <QtGui/QPen>
+#include <QtGui/QAction>
 
 namespace Ui {
     class MeasureConfigWidget;
@@ -38,7 +38,6 @@ namespace Marble
 class MeasureToolPlugin : public RenderPlugin, public DialogConfigurationInterface
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.MeasureToolPlugin" )
     Q_INTERFACES( Marble::RenderPluginInterface )
     Q_INTERFACES( Marble::DialogConfigurationInterface )
     MARBLE_PLUGIN( MeasureToolPlugin )

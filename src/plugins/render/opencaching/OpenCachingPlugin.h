@@ -15,9 +15,9 @@
 #include "RenderPlugin.h"
 #include "RenderPluginInterface.h"
 
-#include <QHash>
-#include <QIcon>
-#include <QAbstractButton>
+#include <QtCore/QHash>
+#include <QtGui/QIcon>
+#include <QtGui/QAbstractButton>
 
 namespace Ui
 {
@@ -33,7 +33,6 @@ namespace Marble
 class OpenCachingPlugin : public AbstractDataPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.OpenCachingPlugin" )
 
     Q_INTERFACES( Marble::RenderPluginInterface )
 

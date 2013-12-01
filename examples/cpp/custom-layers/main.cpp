@@ -12,13 +12,13 @@
 #include <marble/MarbleMap.h>
 #include <marble/MarbleModel.h>
 #include <marble/GeoPainter.h>
-#include <GeoDataLineString.h>
+#include <marble/GeoDataLineString.h>
 #include <marble/LayerInterface.h>
 
-#include <QTime>
-#include <QTimer>
-#include <QApplication>
-#include <QKeyEvent>
+#include <QtCore/QTime>
+#include <QtCore/QTimer>
+#include <QtGui/QApplication>
+#include <QtGui/QKeyEvent>
 
 using namespace Marble;
 

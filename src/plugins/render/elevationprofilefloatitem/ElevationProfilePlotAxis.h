@@ -11,7 +11,7 @@
 #ifndef ELEVATIONPROFILEPLOTAXIS_H
 #define ELEVATIONPROFILEPLOTAXIS_H
 
-#include <QObject>
+#include <QtCore/QObject>
 #include <QList>
 #include <QString>
 

@@ -19,44 +19,12 @@ else()
   endmacro()
 endif()
 
-macro( marble_qt4_automoc )
-  if( ${CMAKE_VERSION} STRLESS "2.8" OR QT4_FOUND)
-    qt4_automoc( ${ARGN} )
-  else()
-    # Just ignore it
-  endif()
-endmacro()
-
-macro(qt_add_resources)
-  if( QT4_FOUND )
-    qt4_add_resources(${ARGN})
-  else()
-    qt5_add_resources(${ARGN})
-  endif()
-endmacro()
-
-macro(qt_wrap_ui)
-  if( QT4_FOUND )
-    qt4_wrap_ui(${ARGN})
-  else()
-    qt5_wrap_ui(${ARGN})
-  endif()
-endmacro()
-
-macro(qt_generate_moc)
-  if( QT4_FOUND )
-    qt4_generate_moc(${ARGN})
-  else()
-    qt5_generate_moc(${ARGN})
-  endif()
-endmacro()
-
 # the place to put in common cmake macros
 # this is needed to minimize the amount of errors to do
 macro( marble_add_plugin _target_name )
 set( _src ${ARGN} )
 if( QTONLY )
-    marble_qt4_automoc( ${_src} )
+    qt4_automoc( ${_src} )
     add_library( ${_target_name} MODULE ${_src} )
     target_link_libraries( ${_target_name} ${QT_QTCORE_LIBRARY}
                                            ${QT_QTDBUS_LIBRARY}
@@ -98,10 +66,10 @@ endmacro( marble_add_plugin _target_name )
 macro( marble_add_designer_plugin _target_name )
 set( _src ${ARGN} )
 
-qt_add_resources( _src ../../../apps/marble-ui/marble.qrc )
+qt4_add_resources( _src ../../../marble.qrc )
 
 if( QTONLY )
-    marble_qt4_automoc( ${_src} )
+    qt4_automoc( ${_src} )
     add_library( ${_target_name} MODULE ${_src} )
     target_link_libraries( ${_target_name} ${QT_QTCORE_LIBRARY}
                                            ${QT_QTDBUS_LIBRARY}
@@ -140,7 +108,7 @@ endmacro( marble_add_designer_plugin _target_name )
 
 macro( marble_add_declarative_plugin _target_name _install_path )
 set( _src ${ARGN} )
-marble_qt4_automoc( ${_src} )
+qt4_automoc( ${_src} )
 add_library( ${_target_name} MODULE ${_src} )
 target_link_libraries( ${_target_name} ${QT_QTCORE_LIBRARY}
                                            ${QT_QTDBUS_LIBRARY}
@@ -173,7 +141,7 @@ macro( marble_add_test TEST_NAME )
     if( BUILD_MARBLE_TESTS )
         set( ${TEST_NAME}_SRCS ${TEST_NAME}.cpp ${ARGN} )
         if( QTONLY )
-            qt_generate_moc( ${TEST_NAME}.cpp ${CMAKE_CURRENT_BINARY_DIR}/${TEST_NAME}.moc )
+            qt4_generate_moc( ${TEST_NAME}.cpp ${CMAKE_CURRENT_BINARY_DIR}/${TEST_NAME}.moc )
             include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
             set( ${TEST_NAME}_SRCS ${CMAKE_CURRENT_BINARY_DIR}/${TEST_NAME}.moc ${${TEST_NAME}_SRCS} )
           
@@ -185,7 +153,6 @@ macro( marble_add_test TEST_NAME )
                                             ${QT_QTCORE_LIBRARY} 
                                             ${QT_QTGUI_LIBRARY} 
                                             ${QT_QTTEST_LIBRARY} 
-                                            ${Qt5Test_LIBRARIES}
                                             marblewidget )
         set_target_properties( ${TEST_NAME} PROPERTIES 
                                COMPILE_FLAGS "-DDATA_PATH=\"\\\"${DATA_PATH}\\\"\" -DPLUGIN_PATH=\"\\\"${PLUGIN_PATH}\\\"\"" )
@@ -213,8 +180,8 @@ endmacro()
 
 # This is just a helper macro to set a bunch of variables empty.
 # We don't know whether the package uses UPPERCASENAME or CamelCaseName, so we try both:
+if(QTONLY)
 
-if(NOT COMMAND _MOFP_SET_EMPTY_IF_DEFINED)
 macro(_MOFP_SET_EMPTY_IF_DEFINED _name _var)
    if(DEFINED ${_name}_${_var})
       set(${_name}_${_var} "")
@@ -225,9 +192,8 @@ macro(_MOFP_SET_EMPTY_IF_DEFINED _name _var)
       set(${_nameUpper}_${_var}  "")
    endif(DEFINED ${_nameUpper}_${_var})
 endmacro(_MOFP_SET_EMPTY_IF_DEFINED _package _var)
-endif()
 
-if(NOT COMMAND MACRO_OPTIONAL_FIND_PACKAGE)
+
 macro (MACRO_OPTIONAL_FIND_PACKAGE _name )
    option(WITH_${_name} "Search for ${_name} package" ON)
    if (WITH_${_name})
@@ -247,13 +213,5 @@ macro (MACRO_OPTIONAL_FIND_PACKAGE _name )
       _mofp_set_empty_if_defined(${_name} DEFINITIONS)
    endif (WITH_${_name})
 endmacro (MACRO_OPTIONAL_FIND_PACKAGE)
-endif()
 
-# older cmake version don't have the add_feature_info macro.
-# It's just informative, so we add our own that does
-# nothing in that case
-if(NOT COMMAND ADD_FEATURE_INFO)
-macro(ADD_FEATURE_INFO)
-  # just ignore it
-endmacro()
-endif()
+endif(QTONLY)

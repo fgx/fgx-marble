@@ -17,11 +17,11 @@
 #include "MarbleDirs.h"
 #include "ViewportParams.h"
 
-#include <QRect>
-#include <QColor>
-#include <QPixmap>
-#include <QPushButton>
-#include <QSvgRenderer>
+#include <QtCore/QRect>
+#include <QtGui/QColor>
+#include <QtGui/QPixmap>
+#include <QtGui/QPushButton>
+#include <QtSvg/QSvgRenderer>
 
 
 namespace Marble

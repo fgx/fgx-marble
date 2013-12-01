@@ -44,6 +44,7 @@ public:
                             AbstractDataPlugin (const Marble::MarbleModel* marbleModel);
     bool                    isInitialized () const;
 // FIXME
+//ig    void                    setDelegate (QDeclarativeComponent* delegate, QGraphicsItem* parent);
     void                    setFavoriteItemsOnly (bool favoriteOnly);
     bool                    isFavoriteItemsOnly () const;
     QObject*                favoritesModel ();
@@ -53,7 +54,6 @@ signals:
 public:
     virtual Marble::RenderPlugin::RenderType  renderType () const;
     void                    handleViewportChange (const Marble::ViewportParams* viewport);
-//ig    void                    setDelegate (QQmlComponent* delegate, QGraphicsItem* parent);
 };
 // AbstractDataPlugin
 

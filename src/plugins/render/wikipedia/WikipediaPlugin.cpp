@@ -19,8 +19,8 @@
 #include "MarbleWidget.h"
 
 // Qt
-#include <QPushButton>
-#include <QLabel>
+#include <QtGui/QPushButton>
+#include <QtGui/QLabel>
 
 using namespace Marble;
 /* TRANSLATOR Marble::WikipediaPlugin */

@@ -40,6 +40,7 @@ public:
         DMS,
         DM,
         UTM,
+        MGRS,
         Astro
     };
 

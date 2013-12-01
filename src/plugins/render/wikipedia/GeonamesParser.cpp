@@ -17,7 +17,7 @@
 #include "MarbleDebug.h"
 
 // Qt
-#include <QByteArray>
+#include <QtCore/QByteArray>
 
 using namespace Marble;
 

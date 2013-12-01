@@ -10,10 +10,10 @@
 
 #include "MarbleWidgetPlugin.h"
 
-#include <QtPlugin>
+#include <QtCore/QtPlugin>
 
-#include "../../lib/marble/MarbleModel.h"
-#include "../../lib/marble/MarbleWidget.h"
+#include "../../lib/MarbleModel.h"
+#include "../../lib/MarbleWidget.h"
 
 
 MarbleWidgetPlugin::MarbleWidgetPlugin(QObject *parent)

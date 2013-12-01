@@ -11,8 +11,8 @@
 
 #include "MarbleDebug.h"
 
-#include <QFile>
-#include <QDir>
+#include <QtCore/QFile>
+#include <QtCore/QDir>
 
 namespace Marble
 {

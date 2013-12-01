@@ -8,8 +8,7 @@
 // Copyright 2012       Bernhard Beschow <bbeschow@cs.tu-berlin.de>
 //
 
-#include <QtTest>
-#include <QBrush>
+#include <QtTest/QtTest>
 
 #include "FrameGraphicsItem.h"
 

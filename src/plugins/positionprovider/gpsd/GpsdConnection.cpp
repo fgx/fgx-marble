@@ -13,7 +13,7 @@
 
 #include "MarbleDebug.h"
 
-#include <QTime>
+#include <QtCore/QTime>
 
 #include <errno.h>
 #include <clocale>

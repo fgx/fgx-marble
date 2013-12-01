@@ -15,8 +15,8 @@
 #include "GeoDataCoordinates.h"
 #include "OsmPlacemark.h"
 
-#include <QList>
-#include <QString>
+#include <QtCore/QList>
+#include <QtCore/QString>
 
 namespace Marble {
 

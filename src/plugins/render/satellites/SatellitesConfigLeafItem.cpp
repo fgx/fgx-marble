@@ -10,7 +10,7 @@
 
 #include "SatellitesConfigLeafItem.h"
 
-#include <QVariant>
+#include <QtCore/QVariant>
 
 namespace Marble {
 

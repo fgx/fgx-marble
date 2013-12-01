@@ -11,7 +11,7 @@
 #ifndef FILEVIEW_FLOAT_ITEM_H
 #define FILEVIEW_FLOAT_ITEM_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 // forward declarations
 class QListView;
@@ -31,7 +31,6 @@ class MarbleWidget;
 class FileViewFloatItem: public AbstractFloatItem
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.FileViewFloatItem" )
     Q_INTERFACES( Marble::RenderPluginInterface )
     MARBLE_PLUGIN(FileViewFloatItem)
 

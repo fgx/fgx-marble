@@ -18,7 +18,6 @@ namespace Marble
 class LogfilePlugin : public ParseRunnerPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.LogPlugin" )
     Q_INTERFACES( Marble::ParseRunnerPlugin )
 
 public:

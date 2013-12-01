@@ -12,7 +12,7 @@
 #include "GeoDataDocument.h"
 #include "GpxParser.h"
 
-#include <QFile>
+#include <QtCore/QFile>
 
 namespace Marble
 {

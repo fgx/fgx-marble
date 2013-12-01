@@ -17,13 +17,13 @@
 #include "GeoDataLatLonAltBox.h"
 #include "MarbleDebug.h"
 
-#include <QDebug>
-#include <QString>
-#include <QUrl>
-#include <QMessageBox>
-#include <QScriptEngine>
-#include <QScriptValue>
-#include <QScriptValueIterator>
+#include <QtCore/QDebug>
+#include <QtCore/QString>
+#include <QtCore/QUrl>
+#include <QtGui/QMessageBox>
+#include <QtScript/QScriptEngine>
+#include <QtScript/QScriptValue>
+#include <QtScript/QScriptValueIterator>
 
 namespace Marble {
 

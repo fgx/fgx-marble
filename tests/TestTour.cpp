@@ -8,8 +8,8 @@
 // Copyright 2013 Illya Kovalevskyy <illya.kovalevskyy@gmail.com>
 //
 
-#include <QObject>
-#include <QtTest>
+#include <QtCore/QObject>
+#include <QtTest/QtTest>
 
 #include <GeoDataParser.h>
 #include <GeoDataDocument.h>
@@ -32,7 +32,7 @@ private slots:
 
 void TestTour::initTestCase()
 {
-    MarbleDebug::setEnabled( true );
+    MarbleDebug::enable = true;
 }
 
 GeoDataDocument *parseKml(const QString &content)

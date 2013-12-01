@@ -5,14 +5,7 @@ INCLUDE_DIRECTORIES(
  ${CMAKE_CURRENT_BINARY_DIR}
  ${QT_INCLUDE_DIR}
 )
-if( QT4_FOUND )
-  INCLUDE(${QT_USE_FILE})
-else()
-INCLUDE_DIRECTORIES(
-  ${Qt5WebKitWidgets_INCLUDE_DIRS}
-  ${Qt5Xml_INCLUDE_DIRS}
-)
-endif()
+INCLUDE(${QT_USE_FILE})
 
 set( nominatim_SRCS OsmNominatimReverseGeocodingRunner.cpp NominatimReverseGeocodingPlugin.cpp )
 

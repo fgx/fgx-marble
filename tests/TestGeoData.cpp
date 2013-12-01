@@ -8,9 +8,9 @@
 // Copyright 2009      Bastian Holst <bastianholst@gmx.de>
 //
 
-#include <QTest>
-#include <QList>
-#include <QDebug>
+#include <QtTest/QTest>
+#include <QtCore/QList>
+#include <QtCore/QDebug>
 #include "GeoDataDocument.h"
 #include "GeoDataFolder.h"
 #include "GeoDataPlacemark.h"

@@ -11,9 +11,9 @@
 #ifndef REGION_H
 #define REGION_H
 
-#include <QString>
-#include <QObject>
-#include <QFileInfo>
+#include <QtCore/QString>
+#include <QtCore/QObject>
+#include <QtCore/QFileInfo>
 
 class Region
 {

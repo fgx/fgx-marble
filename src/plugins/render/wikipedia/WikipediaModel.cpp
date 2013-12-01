@@ -25,17 +25,13 @@
 #include "MarbleDebug.h"
 
 // Qt
-#include <QUrl>
-#include <QString>
-#include <QIcon>
-#include <QImage>
-#include <QPainter>
-#include <QPixmap>
-#include <QSvgRenderer>
-
-#if QT_VERSION >= 0x050000
-  #include <QUrlQuery>
-#endif
+#include <QtCore/QUrl>
+#include <QtCore/QString>
+#include <QtGui/QIcon>
+#include <QtGui/QImage>
+#include <QtGui/QPainter>
+#include <QtGui/QPixmap>
+#include <QtSvg/QSvgRenderer>
 
 using namespace Marble;
 
@@ -66,24 +62,13 @@ void WikipediaModel::getAdditionalItems( const GeoDataLatLonAltBox& box,
     }
         
     QUrl geonamesUrl( "http://ws.geonames.org/wikipediaBoundingBox" );
-#if QT_VERSION < 0x050000
     geonamesUrl.addQueryItem( "north", QString::number( box.north( GeoDataCoordinates::Degree ) ) );
     geonamesUrl.addQueryItem( "south", QString::number( box.south( GeoDataCoordinates::Degree ) ) );
     geonamesUrl.addQueryItem( "east", QString::number( box.east( GeoDataCoordinates::Degree ) ) );
     geonamesUrl.addQueryItem( "west", QString::number( box.west( GeoDataCoordinates::Degree ) ) );
     geonamesUrl.addQueryItem( "maxRows", QString::number( number ) );
     geonamesUrl.addQueryItem( "lang", m_languageCode );
-#else
-    QUrlQuery urlQuery;
-    urlQuery.addQueryItem( "north", QString::number( box.north( GeoDataCoordinates::Degree ) ) );
-    urlQuery.addQueryItem( "south", QString::number( box.south( GeoDataCoordinates::Degree ) ) );
-    urlQuery.addQueryItem( "east", QString::number( box.east( GeoDataCoordinates::Degree ) ) );
-    urlQuery.addQueryItem( "west", QString::number( box.west( GeoDataCoordinates::Degree ) ) );
-    urlQuery.addQueryItem( "maxRows", QString::number( number ) );
-    urlQuery.addQueryItem( "lang", m_languageCode );
-    geonamesUrl.setQuery( urlQuery );
-#endif
-
+    
     downloadDescriptionFile( geonamesUrl );
 }
 

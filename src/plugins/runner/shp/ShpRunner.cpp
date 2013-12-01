@@ -14,7 +14,7 @@
 #include "GeoDataPolygon.h"
 #include "MarbleDebug.h"
 
-#include <QFileInfo>
+#include <QtCore/QFileInfo>
 
 #include <shapefil.h>
 
@@ -76,8 +76,8 @@ void ShpRunner::parseFile( const QString &fileName, DocumentRole role = UnknownD
 
         switch ( shapeType ) {
             case SHPT_POINT: {
-                GeoDataPoint *point = new GeoDataPoint( *shape->padfX, *shape->padfY, 0, GeoDataCoordinates::Degree );
-                placemark->setGeometry( point );
+                placemark->setCoordinate( *shape->padfX, *shape->padfY,
+                                         0, GeoDataCoordinates::Degree );
                 mDebug() << "point " << placemark->name();
                 break;
             }

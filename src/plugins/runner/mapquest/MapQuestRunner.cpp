@@ -19,13 +19,13 @@
 #include "routing/Maneuver.h"
 #include "routing/RouteRequest.h"
 
-#include <QString>
-#include <QVector>
-#include <QUrl>
-#include <QTime>
-#include <QTimer>
-#include <QNetworkReply>
-#include <QDomDocument>
+#include <QtCore/QString>
+#include <QtCore/QVector>
+#include <QtCore/QUrl>
+#include <QtCore/QTime>
+#include <QtCore/QTimer>
+#include <QtNetwork/QNetworkReply>
+#include <QtXml/QDomDocument>
 
 namespace Marble
 {

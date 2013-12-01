@@ -13,10 +13,10 @@
 
 // #include <zlib.h>
 
-#include <QCoreApplication>
-#include <QDebug>
-#include <QFile>
-#include <QStringList>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QDebug>
+#include <QtCore/QFile>
+#include <QtCore/QStringList>
 
 
 QString escapeXml( const QString &str )

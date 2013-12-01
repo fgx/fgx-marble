@@ -15,8 +15,8 @@
 
 #include "MarbleColors.h"
 
-#include <QPainter>
-#include <QWidget>
+#include <QtGui/QPainter>
+#include <QtGui/QWidget>
 
 namespace Marble
 {

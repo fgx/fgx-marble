@@ -10,11 +10,11 @@
 
 #include "logger.h"
 
-#include <QDebug>
-#include <QVariant>
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
+#include <QtCore/QDebug>
+#include <QtCore/QVariant>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlError>
 
 class LoggerPrivate
 {
@@ -85,5 +85,3 @@ void Logger::setStatus(const QString &id, const QString &name, const QString &st
         }
     }
 }
-
-#include "logger.moc"

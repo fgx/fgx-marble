@@ -11,17 +11,12 @@
 #ifndef ABSTRACTWEATHERSERVICE_H
 #define ABSTRACTWEATHERSERVICE_H
 
-#include <QObject>
-#include <QStringList>
-
-class QUrl;
+// Marble
+#include "WeatherModel.h"
 
 namespace Marble
 {
 
-class AbstractDataPluginItem;
-class GeoDataLatLonAltBox;
-class MarbleModel;
 class MarbleWidget;
 
 class AbstractWeatherService : public QObject
@@ -29,7 +24,7 @@ class AbstractWeatherService : public QObject
     Q_OBJECT
     
  public:
-    explicit AbstractWeatherService( const MarbleModel *model, QObject *parent );
+    explicit AbstractWeatherService( QObject *parent );
     virtual ~AbstractWeatherService();
     void setMarbleWidget( MarbleWidget* widget );
     
@@ -38,8 +33,9 @@ class AbstractWeatherService : public QObject
     QStringList favoriteItems() const;
 
     virtual void getAdditionalItems( const GeoDataLatLonAltBox& box,
+                                     const MarbleModel *model,
                                      qint32 number = 10 ) = 0;
-    virtual void getItem( const QString &id ) = 0;
+    virtual void getItem( const QString &id, const MarbleModel *model ) = 0;
     virtual void parseFile( const QByteArray& file );
     
  Q_SIGNALS:
@@ -48,11 +44,9 @@ class AbstractWeatherService : public QObject
     void downloadDescriptionFileRequested( const QUrl& );
 
 protected:
-    const MarbleModel* marbleModel() const;
     MarbleWidget* marbleWidget();
 
 private:
-    const MarbleModel *const m_marbleModel;
     QStringList m_favoriteItems;
     MarbleWidget* m_marbleWidget;
 };

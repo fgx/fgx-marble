@@ -8,8 +8,8 @@
 // Copyright 2013      Mayank Madan <maddiemadan@gmail.com>
 //
 
-#include <QObject>
-#include <QtTest>
+#include <QtCore/QObject>
+#include <QtTest/QtTest>
 
 #include "TestUtils.h"
 #include <GeoDataDocument.h>
@@ -31,7 +31,7 @@ private slots:
 
 void TestNetworkLink::initTestCase()
 {
-    MarbleDebug::setEnabled( true );
+    MarbleDebug::enable = true;
 }
 
 void TestNetworkLink::simpleParseTest()

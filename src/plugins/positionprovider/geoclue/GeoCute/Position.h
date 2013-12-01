@@ -11,8 +11,8 @@
 #ifndef GEOCUTE_POSITION_H
 #define GEOCUTE_POSITION_H
 
-#include <QDateTime>
-#include <QFlags>
+#include <QtCore/QDateTime>
+#include <QtCore/QFlags>
 
 #include "Accuracy.h"
 

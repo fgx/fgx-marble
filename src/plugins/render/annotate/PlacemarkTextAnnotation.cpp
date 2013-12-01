@@ -21,7 +21,7 @@
 #include "MarbleDirs.h"
 #include "MarbleDebug.h"
 
-#include <QPixmap>
+#include <QtGui/QPixmap>
 
 namespace Marble
 {

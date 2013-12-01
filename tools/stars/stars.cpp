@@ -11,14 +11,12 @@
 //
 
 
-#include <QFile>
-#include <QDebug>
-#include <QApplication>
+#include <QtCore/QFile>
+#include <QtCore/QDebug>
+#include <QtGui/QApplication>
 #include <QStringList>
-#include <QFileInfo>
 
 #include <cmath>
-#include <iostream>
 
 #define ENABLEGUI
 
@@ -675,12 +673,6 @@ void exportToKml()
 int main(int argc, char *argv[])
 {
     QCoreApplication  app(argc, argv);
-
-    if (!QFileInfo("catalog.dat").exists())
-    {
-        std::cerr << "Missing stars.dat in current directory. Exiting." << std::endl;
-        return 1;
-    }
 
     colorTable.append(double(-0.23)); // Spica blue
     colorTable.append(double(0.0)); //Rigel blue-white

@@ -17,9 +17,9 @@
 #include "MarbleDebug.h"
 
 // Qt
-#include <QFile>
-#include <QTime>
-#include <QUrl>
+#include <QtCore/QFile>
+#include <QtCore/QTime>
+#include <QtCore/QUrl>
 
 using namespace Marble;
 /* TRANSLATOR Marble::BBCWeatherItem */

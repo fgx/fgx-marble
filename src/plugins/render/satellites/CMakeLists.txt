@@ -5,9 +5,7 @@ INCLUDE_DIRECTORIES(
  ${CMAKE_CURRENT_BINARY_DIR}
  ${QT_INCLUDE_DIR}
 )
-if( QT4_FOUND )
-  INCLUDE(${QT_USE_FILE})
-endif()
+INCLUDE(${QT_USE_FILE})
 
 set( sgp4_SRCS
  sgp4/sgp4ext.cpp
@@ -33,9 +31,9 @@ set( satellites_SRCS
  SatellitesConfigNodeItem.cpp
  SatellitesConfigLeafItem.cpp)
 
-qt_wrap_ui( satellites_SRCS SatellitesConfigDialog.ui )
+qt4_wrap_ui( satellites_SRCS SatellitesConfigDialog.ui )
 
-qt_add_resources( satellites_SRCS satellites.qrc )
+qt4_add_resources( satellites_SRCS satellites.qrc )
 
 marble_add_plugin( SatellitesPlugin
  ${satellites_SRCS}

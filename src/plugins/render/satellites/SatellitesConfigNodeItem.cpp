@@ -11,8 +11,8 @@
 
 #include "SatellitesConfigNodeItem.h"
 
-#include <QStringList>
-#include <QVariant>
+#include <QtCore/QStringList>
+#include <QtCore/QVariant>
 
 #include "MarbleDebug.h"
 

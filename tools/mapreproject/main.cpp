@@ -6,12 +6,12 @@
 #include "Thread.h"
 #include "mapreproject.h"
 
-#include <QCoreApplication>
-#include <QDebug>
-#include <QDir>
-#include <QPair>
-#include <QThread>
-#include <QVector>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QDebug>
+#include <QtCore/QDir>
+#include <QtCore/QPair>
+#include <QtCore/QThread>
+#include <QtCore/QVector>
 
 #include <getopt.h>
 

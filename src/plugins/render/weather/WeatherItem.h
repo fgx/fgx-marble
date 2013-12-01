@@ -17,7 +17,7 @@
 #include "MarbleWidget.h"
 
 // Qt
-#include <QMap>
+#include <QtCore/QMap>
 
 class QString;
 class QAction;

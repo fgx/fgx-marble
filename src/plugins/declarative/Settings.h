@@ -11,8 +11,8 @@
 #ifndef MARBLE_DECLARATIVE_SETTINGS_H
 #define MARBLE_DECLARATIVE_SETTINGS_H
 
-#include <QObject>
-#include <QSettings>
+#include <QtCore/QObject>
+#include <QtCore/QSettings>
 
 class Settings : public QObject
 {

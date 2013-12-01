@@ -5,7 +5,7 @@
  find a copy of this license in LICENSE.txt in the top directory of
  the source code.
 
- Copyright 2013 Ander Pijoan <ander.pijoan@deusto.es>
+ Copyright 2012 Ander Pijoan <ander.pijoan@deusto.es>
 */
 
 #ifndef MARBLE_JSONPLUGIN_H
@@ -19,7 +19,6 @@ namespace Marble
 class JsonPlugin : public ParseRunnerPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.JsonPlugin" )
     Q_INTERFACES( Marble::ParseRunnerPlugin )
 
 public:

@@ -12,10 +12,10 @@
 #ifndef SCENEGRAPHICSITEM_H
 #define SCENEGRAPHICSITEM_H
 
-#include <QRect>
-#include <QObject>
-#include <QPainterPath>
-#include <QMouseEvent>
+#include <QtCore/QRect>
+#include <QtCore/QObject>
+#include <QtGui/QPainterPath>
+#include <QtGui/QMouseEvent>
 
 #include "GeoGraphicsItem.h"
 #include "marble_export.h"

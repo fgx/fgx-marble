@@ -9,19 +9,19 @@
 //
 
 
-#include <QCoreApplication>
-#include <QDataStream>
-#include <QFile>
-#include <QStringList>
-#include <QTextStream>
-#include <QDebug>
+#include <QtGui/QApplication>
+#include <QtCore/QDataStream>
+#include <QtCore/QFile>
+#include <QtCore/QStringList>
+#include <QtCore/QTextStream>
+#include <QtCore/QDebug>
 
 int main(int argc, char *argv[])
 {
     const qreal INT2SVG = 216.0 / 10800.0;
     const qreal INT2DEG = 180.0 / 10800.0;
 
-    QCoreApplication  app(argc, argv);
+    QApplication  app(argc, argv);
 
     qDebug( " Syntax: pnt2svg [-i pnt-sourcefile -o svg-targetfile -cn clipNorth -cs clipSouth -cw clipWest -ce clipEast]" );
 

@@ -19,8 +19,8 @@
 #include "GeoDataDocument.h"
 #include "GeoDataExtendedData.h"
 
-#include <QProcess>
-#include <QMap>
+#include <QtCore/QProcess>
+#include <QtCore/QMap>
 
 namespace Marble
 {

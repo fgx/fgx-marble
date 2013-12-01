@@ -10,14 +10,14 @@
 
 #include "LatLonEditPlugin.h"
 
-#include "../../lib/marble/LatLonEdit.h"
+#include "../../lib/LatLonEdit.h"
 
-#include <QObject>
-#include <QString>
-#include <QtPlugin>
-#include <QWidget>
-#include <QIcon>
-#include <QDesignerCustomWidgetInterface>
+#include <QtCore/QObject>
+#include <QtCore/QString>
+#include <QtCore/QtPlugin>
+#include <QtGui/QWidget>
+#include <QtGui/QIcon>
+#include <QtDesigner/QDesignerCustomWidgetInterface>
 
 
 LatLonEditPlugin::LatLonEditPlugin(QObject *parent) : QObject(parent)

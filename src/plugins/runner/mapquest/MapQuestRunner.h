@@ -14,8 +14,8 @@
 
 #include "RoutingRunner.h"
 
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkReply>
 
 namespace Marble
 {

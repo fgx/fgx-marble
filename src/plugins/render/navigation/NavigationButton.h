@@ -11,7 +11,7 @@
 #ifndef NAVIGATIONBUTTON_H
 #define NAVIGATIONBUTTON_H
 
-#include <QAbstractButton>
+#include <QtGui/QAbstractButton>
 
 namespace Marble
 {

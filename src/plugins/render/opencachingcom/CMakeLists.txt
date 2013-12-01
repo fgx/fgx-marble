@@ -5,9 +5,7 @@ INCLUDE_DIRECTORIES(
  ${CMAKE_BINARY_DIR}/src/plugins/render/opencachingcom
  ${QT_INCLUDE_DIR}
 )
-if( QT4_FOUND )
-  INCLUDE(${QT_USE_FILE})
-endif()
+INCLUDE(${QT_USE_FILE})
 
 SET( my_SRCS
   OpenCachingComPlugin.cpp
@@ -17,12 +15,12 @@ SET( my_SRCS
 # SET( opencaching_UI OpenCachingConfigWidget.ui )
 SET( cachedetailsdialog_UI CacheDetailsDialog.ui )
 
-# QT_WRAP_UI(my_SRCS ${opencaching_UI})
-QT_WRAP_UI(my_SRCS ${cachedetailsdialog_UI})
+# QT4_WRAP_UI(my_SRCS ${opencaching_UI})
+QT4_WRAP_UI(my_SRCS ${cachedetailsdialog_UI})
 
-qt_add_resources(my_SRCS opencachingcom.qrc)
+qt4_add_resources(my_SRCS opencachingcom.qrc)
 
-MARBLE_QT4_AUTOMOC( ${my_SRCS} )
+QT4_AUTOMOC( ${my_SRCS} )
 
 MARBLE_ADD_PLUGIN( OpenCachingComPlugin ${my_SRCS} )
 

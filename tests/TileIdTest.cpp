@@ -8,8 +8,8 @@
 // Copyright 2012 Thibaut Gridel <tgridel@free.fr>
 
 
-#include <QMetaType>
-#include <QtTest>
+#include <QtCore/QMetaType>
+#include <QtTest/QtTest>
 #include "TileId.h"
 #include "GeoDataCoordinates.h"
 #include "TestUtils.h"
@@ -82,7 +82,8 @@ void TileIdTest::testFromCoordinates()
     QFETCH( int, x);
     QFETCH( int, y);
 
-    const TileId tile = TileId::fromCoordinates(GeoDataCoordinates( lon , lat, 0, GeoDataCoordinates::Degree), zoom );
+    const TileId tile = TileId::fromCoordinates(GeoDataCoordinates( lon , lat, GeoDataCoordinates::Degree), zoom );
+    qDebug() << "zoom " << zoom;
 
     QCOMPARE( tile.x(), x );
     QCOMPARE( tile.y(), y );

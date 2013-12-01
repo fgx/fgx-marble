@@ -8,8 +8,8 @@
 // Copyright 2011      Niko Sams <niko.sams@gmail.com>
 //
 
-#include <QObject>
-#include <QtTest>
+#include <QtCore/QObject>
+#include <QtTest/QtTest>
 
 #include "GeoDataPoint.h"
 #include "GeoDataLinearRing.h"
@@ -40,7 +40,7 @@ private slots:
 
 void TestTrack::initTestCase()
 {
-    MarbleDebug::setEnabled( true );
+    MarbleDebug::enable = true;
 }
 
 void TestTrack::simpleParseTest()

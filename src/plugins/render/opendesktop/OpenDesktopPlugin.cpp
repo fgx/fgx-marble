@@ -15,7 +15,7 @@
 
 #include "ui_OpenDesktopConfigWidget.h"
 
-#include <QPushButton>
+#include <QtGui/QPushButton>
 
 using namespace Marble;
 

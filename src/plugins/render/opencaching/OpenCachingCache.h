@@ -14,8 +14,8 @@
 #include "OpenCachingCacheLog.h"
 #include "OpenCachingCacheDescription.h"
 
-#include <QString>
-#include <QDateTime>
+#include <QtCore/QString>
+#include <QtCore/QDateTime>
 
 namespace Marble
 {

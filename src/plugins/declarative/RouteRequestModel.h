@@ -11,7 +11,7 @@
 #ifndef MARBLE_ROUTEREQUESTMODEL_H
 #define MARBLE_ROUTEREQUESTMODEL_H
 
-#include <QAbstractListModel>
+#include <QtCore/QAbstractListModel>
 
 namespace Marble { class RouteRequest; }
 class Routing;
@@ -39,11 +39,6 @@ public:
 
     /** Overload of QAbstractListModel */
     int rowCount ( const QModelIndex &parent = QModelIndex() ) const;
-
-#if QT_VERSION >= 0x050000
-    /** Overload of QAbstractListModel */
-    QHash<int, QByteArray> roleNames() const;
-#endif
 
     /** Overload of QAbstractListModel */
     QVariant headerData ( int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
@@ -73,9 +68,6 @@ private Q_SLOTS:
 private:
     Marble::RouteRequest* m_request;
     Routing *m_routing;
-#if QT_VERSION >= 0x050000
-    QHash<int, QByteArray> m_roleNames;
-#endif
 };
 
 #endif // MARBLE_ROUTEREQUESTMODEL_H

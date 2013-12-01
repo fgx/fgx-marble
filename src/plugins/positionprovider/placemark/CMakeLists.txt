@@ -5,9 +5,8 @@ INCLUDE_DIRECTORIES(
  ${CMAKE_CURRENT_BINARY_DIR}
  ${QT_INCLUDE_DIR}
 )
-if( QT4_FOUND )
-  include(${QT_USE_FILE})
-endif()
+
+include(${QT_USE_FILE})
 
 set( placemark_SRCS
  PlacemarkPositionProviderPlugin.cpp

@@ -12,8 +12,8 @@
 #include "EarthquakeModel.h"
 #include "ui_EarthquakeConfigWidget.h"
 
-#include <QPushButton>
-#include <QSlider>
+#include <QtGui/QPushButton>
+#include <QtGui/QSlider>
 
 #include "MarbleModel.h"
 

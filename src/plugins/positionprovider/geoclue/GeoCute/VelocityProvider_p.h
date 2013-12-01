@@ -13,8 +13,8 @@
 
 #include "VelocityProvider.h"
 
-#include <QString>
-#include <QDBusMessage>
+#include <QtCore/QString>
+#include <QtDBus/QDBusMessage>
 
 #include "SimpleDBusInterface.h"
 

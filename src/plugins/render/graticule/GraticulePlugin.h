@@ -15,14 +15,14 @@
 #ifndef MARBLEGRATICULEPLUGIN_H
 #define MARBLEGRATICULEPLUGIN_H
 
-#include <QMap>
-#include <QObject>
-#include <QVector>
-#include <QHash>
-#include <QPen>
-#include <QIcon>
-#include <QColorDialog>
-#include <QAbstractButton>
+#include <QtCore/QMap>
+#include <QtCore/QObject>
+#include <QtCore/QVector>
+#include <QtCore/QHash>
+#include <QtGui/QPen>
+#include <QtGui/QIcon>
+#include <QtGui/QColorDialog>
+#include <QtGui/QAbstractButton>
 
 
 #include "DialogConfigurationInterface.h"
@@ -54,7 +54,6 @@ class GeoDataLatLonAltBox;
 class GraticulePlugin : public RenderPlugin, public DialogConfigurationInterface
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.GraticulePlugin" )
     Q_INTERFACES( Marble::RenderPluginInterface )
     Q_INTERFACES( Marble::DialogConfigurationInterface )
     MARBLE_PLUGIN( GraticulePlugin )
@@ -220,8 +219,6 @@ class GraticulePlugin : public RenderPlugin, public DialogConfigurationInterface
     QPen m_equatorCirclePen;
     QPen m_tropicsCirclePen;
     QPen m_gridCirclePen;
-    bool m_showPrimaryLabels;
-    bool m_showSecondaryLabels;
 
     bool m_isInitialized;
 

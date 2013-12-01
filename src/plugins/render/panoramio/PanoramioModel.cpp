@@ -17,8 +17,8 @@
 #include "PanoramioWidget.h"
 
 // Qt
-#include <QUrl>
-#include <QString>
+#include <QtCore/QUrl>
+#include <QtCore/QString>
 
 using namespace Marble;
 

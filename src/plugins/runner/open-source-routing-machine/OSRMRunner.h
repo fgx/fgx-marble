@@ -16,9 +16,9 @@
 #include "GeoDataCoordinates.h"
 #include "routing/instructions/RoutingInstruction.h"
 
-#include <QString>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
+#include <QtCore/QString>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkReply>
 
 namespace Marble
 {

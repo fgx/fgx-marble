@@ -10,10 +10,10 @@
 
 #include "MasterClient_p.h"
 
-#include <QString>
-#include <QDBusMessage>
-#include <QDBusReply>
-#include <QDBusObjectPath>
+#include <QtCore/QString>
+#include <QtDBus/QDBusMessage>
+#include <QtDBus/QDBusReply>
+#include <QtDBus/QDBusObjectPath>
 
 #include "PositionProvider.h"
 

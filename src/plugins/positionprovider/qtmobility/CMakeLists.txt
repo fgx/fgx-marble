@@ -8,9 +8,7 @@ INCLUDE_DIRECTORIES(
  ${QTMOBILITY_INCLUDE_DIR}
 )
 
-if( QT4_FOUND )
-  INCLUDE(${QT_USE_FILE})
-endif()
+INCLUDE(${QT_USE_FILE})
 
 SET( qtmobility_SRCS
  QtMobilityPositionProviderPlugin.cpp

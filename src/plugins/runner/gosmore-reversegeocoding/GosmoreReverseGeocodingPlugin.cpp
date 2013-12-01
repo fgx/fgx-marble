@@ -13,8 +13,8 @@
 #include "GosmoreReverseGeocodingRunner.h"
 #include "MarbleDirs.h"
 
-#include <QDir>
-#include <QFileInfo>
+#include <QtCore/QDir>
+#include <QtCore/QFileInfo>
 
 namespace Marble
 {

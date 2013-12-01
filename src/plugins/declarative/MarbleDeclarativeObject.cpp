@@ -13,7 +13,7 @@
 #include "MarbleDirs.h"
 #include "MarbleGlobal.h"
 
-#include <QProcessEnvironment>
+#include <QtCore/QProcessEnvironment>
 
 class MarbleDeclarativeObjectPrivate
 {

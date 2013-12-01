@@ -16,12 +16,12 @@
 #include "WeatherData.h"
 
 // Qt
-#include <QHash>
-#include <QList>
-#include <QMutex>
-#include <QPointer>
-#include <QStack>
-#include <QXmlStreamReader>
+#include <QtCore/QHash>
+#include <QtCore/QList>
+#include <QtCore/QMutex>
+#include <QtCore/QPointer>
+#include <QtCore/QStack>
+#include <QtCore/QXmlStreamReader>
 
 class QObject;
 
@@ -41,6 +41,7 @@ class BBCParser : public AbstractWorkerThread, public QXmlStreamReader
 {
     Q_OBJECT
 public:
+    explicit BBCParser( QObject *parent = 0 );
     ~BBCParser();
 
     static BBCParser *instance();
@@ -54,7 +55,6 @@ Q_SIGNALS:
     void parsedFile();
 
 private:
-    explicit BBCParser( QObject *parent = 0 );
     QList<WeatherData> read( QIODevice *device );
 
     void readUnknownElement();
@@ -64,17 +64,19 @@ private:
     void readDescription( WeatherData *data );
     void readTitle( WeatherData *data );
     void readPubDate( WeatherData *data );
+    
+    void setupHashes();
 
     QList<WeatherData> m_list;
     QStack<ScheduleEntry> m_schedule;
     QMutex m_scheduleMutex;
-
-    QHash<QString, WeatherData::WeatherCondition> m_dayConditions;
-    QHash<QString, WeatherData::WeatherCondition> m_nightConditions;
-    QHash<QString, WeatherData::WindDirection> m_windDirections;
-    QHash<QString, WeatherData::PressureDevelopment> m_pressureDevelopments;
-    QHash<QString, WeatherData::Visibility> m_visibilityStates;
-    QHash<QString, int> m_monthNames;
+    
+    static QHash<QString, WeatherData::WeatherCondition> dayConditions;
+    static QHash<QString, WeatherData::WeatherCondition> nightConditions;
+    static QHash<QString, WeatherData::WindDirection> windDirections;
+    static QHash<QString, WeatherData::PressureDevelopment> pressureDevelopments;
+    static QHash<QString, WeatherData::Visibility> visibilityStates;
+    static QHash<QString, int> monthNames;
 };
 
 } // Marble namespace

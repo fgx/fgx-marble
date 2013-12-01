@@ -16,7 +16,7 @@
 #include "GeoDataCoordinates.h"
 #include "GeoDataLatLonAltBox.h"
 
-#include <QtTest>
+#include <QtTest/QtTest>
 
 namespace QTest
 {
@@ -24,14 +24,14 @@ namespace QTest
 bool qCompare(qreal val1, qreal val2, qreal epsilon, const char *actual, const char *expected, const char *file, int line)
 {
     return ( qAbs( val1 - val2 ) < epsilon )
-        ? compare_helper( true, "COMPARE()", toString( val1 ), toString( val2 ), actual, expected, file, line )
+        ? compare_helper( true, "COMPARE()", file, line )
         : compare_helper( false, "Compared qreals are not the same", toString( val1 ), toString( val2 ), actual, expected, file, line );
 }
 
 template<>
 char *toString(const Marble::GeoDataCoordinates &coordinates)
 {
-    return qstrdup( coordinates.toString( Marble::GeoDataCoordinates::Decimal, 10 ).toLatin1().data() );
+    return qstrdup( coordinates.toString( Marble::GeoDataCoordinates::Decimal, 10 ).toAscii().data() );
 }
 
 template<>
@@ -43,7 +43,7 @@ char *toString(const Marble::GeoDataLatLonBox &box)
         .arg( box.south( Marble::GeoDataCoordinates::Degree ) )
         .arg( box.east( Marble::GeoDataCoordinates::Degree ) );
 
-    return qstrdup( string.toLatin1().data() );
+    return qstrdup( string.toAscii().data() );
 }
 
 template<>
@@ -57,7 +57,7 @@ char *toString(const Marble::GeoDataLatLonAltBox &box)
         .arg( box.minAltitude() )
         .arg( box.maxAltitude() );
 
-    return qstrdup( string.toLatin1().data() );
+    return qstrdup( string.toAscii().data() );
 }
 
 }
@@ -68,8 +68,8 @@ do {\
         return;\
 } while (0)
 
-#define addRow() QTest::newRow( QString("line %1").arg( __LINE__ ).toLatin1().data() )
-#define addNamedRow(testName) QTest::newRow( QString("line %1: %2").arg( __LINE__ ).arg(testName).toLatin1().data() )
+#define addRow() QTest::newRow( QString("line %1").arg( __LINE__ ).toAscii().data() )
+#define addNamedRow(testName) QTest::newRow( QString("line %1: %2").arg( __LINE__ ).arg(testName).toAscii().data() )
 
 namespace Marble {
 

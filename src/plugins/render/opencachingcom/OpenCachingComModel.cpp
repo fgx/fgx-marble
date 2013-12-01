@@ -16,11 +16,11 @@
 #include "GeoDataCoordinates.h"
 #include "MarbleDebug.h"
 
-#include <QDebug>
-#include <QString>
-#include <QUrl>
-#include <QScriptEngine>
-#include <QScriptValue>
+#include <QtCore/QDebug>
+#include <QtCore/QString>
+#include <QtCore/QUrl>
+#include <QtScript/QScriptEngine>
+#include <QtScript/QScriptValue>
 
 namespace Marble {
 

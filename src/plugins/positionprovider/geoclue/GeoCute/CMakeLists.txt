@@ -16,7 +16,7 @@ set(GeoCute_SRCS
     Server/ProviderApplication.cpp
 )
 
-marble_qt4_automoc(${GeoCute_SRCS})
+qt4_automoc(${GeoCute_SRCS})
 
 add_library(GeoCute SHARED ${GeoCute_SRCS})
 

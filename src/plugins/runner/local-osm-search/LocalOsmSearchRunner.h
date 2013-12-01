@@ -18,7 +18,7 @@
 #include "OsmPlacemark.h"
 #include "GeoDataFeature.h"
 
-#include <QMap>
+#include <QtCore/QMap>
 
 namespace Marble
 {

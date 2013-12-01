@@ -14,7 +14,7 @@
 
 #include "RenderPlugin.h"
 
-#include <QPixmap>
+#include <QtGui/QPixmap>
 
 namespace Marble
 {
@@ -27,7 +27,6 @@ namespace Marble
 class SunPlugin : public RenderPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.SunPlugin" )
     Q_INTERFACES( Marble::RenderPluginInterface )
     MARBLE_PLUGIN( SunPlugin )
  public:

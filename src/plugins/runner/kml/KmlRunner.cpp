@@ -18,8 +18,8 @@
 #include "KmzHandler.h"
 #endif
 
-#include <QFile>
-#include <QFileInfo>
+#include <QtCore/QFile>
+#include <QtCore/QFileInfo>
 
 namespace Marble
 {

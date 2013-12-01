@@ -16,7 +16,7 @@
 #include "SearchRunnerPlugin.h"
 #include "OsmDatabase.h"
 
-#include <QFileSystemWatcher>
+#include <QtCore/QFileSystemWatcher>
 
 namespace Marble
 {
@@ -24,7 +24,6 @@ namespace Marble
 class LocalOsmSearchPlugin : public SearchRunnerPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.LocalOsmSearchPlugin" )
     Q_INTERFACES( Marble::SearchRunnerPlugin )
 
 public:

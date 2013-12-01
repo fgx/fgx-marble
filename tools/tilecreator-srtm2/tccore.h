@@ -13,11 +13,11 @@
 #define TCCORE_H
 
 
-#include <QCoreApplication>
-#include <QDebug>
-#include <QObject>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QDebug>
+#include <QtCore/QObject>
 
-#include "TileCreator.h"
+#include "../lib/TileCreator.h"
 
 namespace Marble
 {

@@ -11,10 +11,10 @@
 #ifndef OPENCACHINGCACHELOGENTRY_H
 #define OPENCACHINGCACHELOGENTRY_H
 
-#include <QString>
-#include <QDateTime>
-#include <QHash>
-#include <QVariant>
+#include <QtCore/QString>
+#include <QtCore/QDateTime>
+#include <QtCore/QHash>
+#include <QtCore/QVariant>
 
 namespace Marble
 {

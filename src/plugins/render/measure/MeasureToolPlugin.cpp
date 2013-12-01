@@ -23,11 +23,11 @@
 #include "MarbleLocale.h"
 #include "Planet.h"
 
-#include <QColor>
-#include <QPen>
-#include <QPixmap>
-#include <QPushButton>
-#include <QCheckBox>
+#include <QtGui/QColor>
+#include <QtGui/QPen>
+#include <QtGui/QPixmap>
+#include <QtGui/QPushButton>
+#include <QtGui/QCheckBox>
 
 namespace Marble
 {

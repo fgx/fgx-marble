@@ -8,8 +8,8 @@
 // Copyright 2012      Dennis Nienhüser <earthwings@gentoo.org>
 //
 
-#include <QObject>
-#include <QtTest>
+#include <QtCore/QObject>
+#include <QtTest/QtTest>
 
 #include <GeoDataParser.h>
 #include <GeoDataDocument.h>
@@ -33,7 +33,7 @@ private slots:
 
 void TestBalloonStyle::initTestCase()
 {
-    MarbleDebug::setEnabled( true );
+    MarbleDebug::enable = true;
 }
 
 void TestBalloonStyle::simpleParseTest()

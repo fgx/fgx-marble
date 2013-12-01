@@ -11,8 +11,8 @@
 #include "OfflineDataModel.h"
 #include "MarbleDirs.h"
 
-#include <QModelIndex>
-#include <QDir>
+#include <QtCore/QModelIndex>
+#include <QtCore/QDir>
 
 OfflineDataModel::OfflineDataModel( QObject *parent ) : QSortFilterProxyModel( parent ),
     m_vehicleTypeFilter( Any )
@@ -24,11 +24,7 @@ OfflineDataModel::OfflineDataModel( QObject *parent ) : QSortFilterProxyModel( p
     setSourceModel( &m_newstuffModel );
     QHash<int,QByteArray> roleNames = m_newstuffModel.roleNames();
     roleNames[Qt::UserRole+17] = "continent";
-#if QT_VERSION < 0x050000
     setRoleNames( roleNames );
-#else
-    m_roleNames = roleNames;
-#endif
 
     sort( 0 );
     setDynamicSortFilter( true );
@@ -43,13 +39,6 @@ int OfflineDataModel::count()
 {
     return rowCount();
 }
-
-#if QT_VERSION >= 0x050000
-QHash<int, QByteArray> OfflineDataModel::roleNames() const
-{
-    return m_roleNames;
-}
-#endif
 
 QVariant OfflineDataModel::data(const QModelIndex &index, int role) const
 {
@@ -80,8 +69,7 @@ QVariant OfflineDataModel::data(const QModelIndex &index, int role) const
 void OfflineDataModel::setVehicleTypeFilter( VehicleTypes filter )
 {
     m_vehicleTypeFilter = filter;
-    beginResetModel();
-    endResetModel();
+    reset();
 }
 
 void OfflineDataModel::install( int index )

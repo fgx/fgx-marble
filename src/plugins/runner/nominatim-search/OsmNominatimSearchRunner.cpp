@@ -17,13 +17,13 @@
 #include "GeoDataExtendedData.h"
 #include "TinyWebBrowser.h"
 
-#include <QString>
-#include <QVector>
-#include <QUrl>
-#include <QTimer>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
-#include <QDomDocument>
+#include <QtCore/QString>
+#include <QtCore/QVector>
+#include <QtCore/QUrl>
+#include <QtCore/QTimer>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkReply>
+#include <QtXml/QDomDocument>
 
 namespace Marble
 {

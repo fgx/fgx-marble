@@ -20,11 +20,11 @@
 #include "GeoSceneHead.h"
 #include "GeoSceneLicense.h"
 
-#include <QMessageBox>
-#include <QCommonStyle>
-#include <QPainter>
-#include <QLabel>
-#include <QMenu>
+#include <QtGui/QMessageBox>
+#include <QtGui/QCommonStyle>
+#include <QtGui/QPainter>
+#include <QtGui/QLabel>
+#include <QtGui/QMenu>
 
 namespace Marble
 {

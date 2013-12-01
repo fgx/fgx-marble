@@ -201,6 +201,7 @@ public:
     qint64                  popularity () const;
     void                    setPopularity (qint64 popularity);
     const Marble::GeoDataStyleMap*  styleMap () const;
+    const QSize             symbolSize () const;
     static void             resetDefaultStyles ();
     virtual void            pack (QDataStream& stream) const;
     virtual void            unpack (QDataStream& stream);
@@ -224,6 +225,7 @@ public:
     void                    setRole (const QString& role);
     static Marble::GeoDataFeature::GeoDataVisualCategory  OsmVisualCategory (const QString& keyValue);
     bool                    isGloballyVisible () const;
+    const QImage            symbol () const;
     int                     zoomLevel () const;
     void                    setZoomLevel (int index);
     static QColor           defaultLabelColor ();

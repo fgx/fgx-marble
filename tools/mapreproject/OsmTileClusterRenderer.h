@@ -4,10 +4,10 @@
 #include "mapreproject.h"
 #include "ReadOnlyMapDefinition.h"
 
-#include <QDir>
-#include <QObject>
-#include <QVector>
-#include <QImage>
+#include <QtCore/QDir>
+#include <QtCore/QObject>
+#include <QtCore/QVector>
+#include <QtGui/QImage>
 
 class ReadOnlyMapImage;
 

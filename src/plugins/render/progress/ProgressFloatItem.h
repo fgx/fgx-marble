@@ -13,9 +13,9 @@
 
 #include "AbstractFloatItem.h"
 
-#include <QMutex>
-#include <QObject>
-#include <QTimer>
+#include <QtCore/QMutex>
+#include <QtCore/QObject>
+#include <QtCore/QTimer>
 
 namespace Marble
 {
@@ -27,7 +27,6 @@ namespace Marble
 class ProgressFloatItem  : public AbstractFloatItem
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.ProgressFloatItem" )
 
     Q_INTERFACES( Marble::RenderPluginInterface )
 

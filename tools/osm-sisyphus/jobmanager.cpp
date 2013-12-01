@@ -10,12 +10,12 @@
 
 #include "jobmanager.h"
 
-#include <QTimer>
-#include <QFile>
-#include <QTextStream>
-#include <QDebug>
-#include <QProcess>
-#include <QDomDocument>
+#include <QtCore/QTimer>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtCore/QDebug>
+#include <QtCore/QProcess>
+#include <QtXml/QDomDocument>
 
 JobManager::JobManager(QObject *parent) :
     QObject(parent)
@@ -132,5 +132,3 @@ void JobManager::addJob(const PendingJob &job)
     countryJob->setMonavSettings(m_monavSettings.absoluteFilePath());
     m_queue.addJob(countryJob);
 }
-
-#include "jobmanager.moc"

@@ -15,6 +15,8 @@
 #include "GeoParser.h"
 #include "OsmWayFactory.h"
 #include "OsmRelationFactory.h"
+#include "GeoDataDocument.h"
+#include "GeoDataPlacemark.h"
 #include "GeoDataParser.h"
 #include "GeoDataPolygon.h"
 #include "OsmElementDictionary.h"

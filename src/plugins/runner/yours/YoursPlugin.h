@@ -20,7 +20,6 @@ namespace Marble
 class YoursPlugin : public RoutingRunnerPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.YoursPlugin" )
     Q_INTERFACES( Marble::RoutingRunnerPlugin )
 
 public:

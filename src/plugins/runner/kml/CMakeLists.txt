@@ -3,12 +3,10 @@ PROJECT( KmlPlugin )
 INCLUDE_DIRECTORIES(
  ${CMAKE_CURRENT_SOURCE_DIR}
  ${CMAKE_CURRENT_BINARY_DIR}
- ${CMAKE_SOURCE_DIR}/src/lib/marble/geodata/handlers/kml
+ ${CMAKE_SOURCE_DIR}/src/lib/geodata/handlers/kml
  ${QT_INCLUDE_DIR}
 )
-if( QT4_FOUND )
-  INCLUDE(${QT_USE_FILE})
-endif()
+INCLUDE(${QT_USE_FILE})
 
 set( kml_SRCS KmlDocument.cpp KmlParser.cpp KmlPlugin.cpp KmlRunner.cpp )
 

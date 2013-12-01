@@ -13,7 +13,7 @@
 
 #include "MonavMap.h"
 
-#include <QAbstractTableModel>
+#include <QtCore/QAbstractTableModel>
 
 namespace Marble
 {

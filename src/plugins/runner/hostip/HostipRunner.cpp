@@ -14,11 +14,11 @@
 #include "GeoDataFeature.h"
 #include "GeoDataPlacemark.h"
 
-#include <QString>
-#include <QTimer>
-#include <QVector>
-#include <QUrl>
-#include <QNetworkReply>
+#include <QtCore/QString>
+#include <QtCore/QTimer>
+#include <QtCore/QVector>
+#include <QtCore/QUrl>
+#include <QtNetwork/QNetworkReply>
 
 namespace Marble
 {

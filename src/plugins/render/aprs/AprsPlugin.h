@@ -11,9 +11,9 @@
 #ifndef APRSPLUGIN_H
 #define APRSPLUGIN_H
 
-#include <QObject>
-#include <QMutex>
-#include <QDialog>
+#include <QtCore/QObject>
+#include <QtCore/QMutex>
+#include <QtGui/QDialog>
 
 #include "RenderPlugin.h"
 #include "DialogConfigurationInterface.h"
@@ -38,7 +38,6 @@ namespace Marble
     class AprsPlugin : public RenderPlugin, public DialogConfigurationInterface
     {
         Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.AprsPlugin" )
         Q_INTERFACES( Marble::RenderPluginInterface )
         Q_INTERFACES( Marble::DialogConfigurationInterface )
         MARBLE_PLUGIN( AprsPlugin )

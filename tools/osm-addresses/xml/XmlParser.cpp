@@ -10,7 +10,7 @@
 
 #include "XmlParser.h"
 
-#include <QDebug>
+#include <QtCore/QDebug>
 
 namespace Marble
 {
@@ -143,5 +143,3 @@ bool XmlParser::endElement ( const QString & /*namespaceURI*/, const QString & /
 }
 
 }
-
-#include "XmlParser.moc"

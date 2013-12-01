@@ -14,7 +14,7 @@
 #include "OsmRegion.h"
 #include "OsmPlacemark.h"
 
-#include <QObject>
+#include <QtCore/QObject>
 
 namespace Marble
 {

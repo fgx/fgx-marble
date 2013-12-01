@@ -15,7 +15,7 @@
 
 #include "LabelGraphicsItem.h"
 
-#include <QImage>
+#include <QtGui/QImage>
 
 class QAction;
 class QUrl;

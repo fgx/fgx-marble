@@ -12,9 +12,9 @@
 #include "logger.h"
 #include "upload.h"
 
-#include <QDebug>
-#include <QDateTime>
-#include <QProcess>
+#include <QtCore/QDebug>
+#include <QtCore/QDateTime>
+#include <QtCore/QProcess>
 
 Job::Job(const Region &region, const JobParameters &parameters, QObject *parent) :
     QObject(parent), m_status(Waiting), m_region(region), m_parameters(parameters)
@@ -317,5 +317,3 @@ QFileInfo Job::searchFile()
     QFileInfo result(m_parameters.base(), subdir + '/' + m_region.id() + ".sqlite");
     return result;
 }
-
-#include "job.moc"

@@ -11,7 +11,7 @@
 #ifndef MARBLE_SATELLITESCONFIGMODEL_H
 #define MARBLE_SATELLITESCONFIGMODEL_H
 
-#include <QModelIndex>
+#include <QtCore/QModelIndex>
 
 #include "SatellitesConfigNodeItem.h"
 

@@ -11,7 +11,7 @@
 #ifndef JOBPARAMETERS_H
 #define JOBPARAMETERS_H
 
-#include <QDir>
+#include <QtCore/QDir>
 
 class JobParameters
 {

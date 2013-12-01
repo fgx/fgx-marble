@@ -25,9 +25,9 @@
 #include "MarbleWidget.h"
 
 // Qt
-#include <QHash>
-#include <QString>
-#include <QUrl>
+#include <QtCore/QHash>
+#include <QtCore/QString>
+#include <QtCore/QUrl>
 
 using namespace Marble;
 

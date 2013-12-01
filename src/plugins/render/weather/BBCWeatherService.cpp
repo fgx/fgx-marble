@@ -25,17 +25,17 @@
 #include "MarbleGlobal.h"
 
 // Qt
-#include <QFile>
-#include <QList>
-#include <QTime>
-#include <QUrl>
+#include <QtCore/QFile>
+#include <QtCore/QList>
+#include <QtCore/QTime>
+#include <QtCore/QUrl>
 
 using namespace Marble;
 
 const quint32 maxDisplayedFavoritesNumber = 100;
 
-BBCWeatherService::BBCWeatherService( const MarbleModel *model, QObject *parent )
-    : AbstractWeatherService( model, parent ),
+BBCWeatherService::BBCWeatherService( QObject *parent )
+    : AbstractWeatherService( parent ),
       m_parsingStarted( false ),
       m_parser( 0 ),
       m_itemGetter( new BBCItemGetter( this ) )
@@ -60,16 +60,17 @@ void BBCWeatherService::setFavoriteItems( const QStringList& favorite )
 }
 
 void BBCWeatherService::getAdditionalItems( const GeoDataLatLonAltBox& box,
+                                            const MarbleModel *model,
                                             qint32 number )
 {
     if ( !m_parsingStarted ) {
         setupList();
     }
 
-    m_itemGetter->setSchedule( box, number );
+    m_itemGetter->setSchedule( box, model, number );
 }
 
-void BBCWeatherService::getItem( const QString &id )
+void BBCWeatherService::getItem( const QString &id, const MarbleModel * )
 {
     if ( id.startsWith( QLatin1String( "bbc" ) ) ) {
         BBCStation const station = m_itemGetter->station( id );

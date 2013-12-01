@@ -10,8 +10,8 @@
 
 #include "ZoomButtonInterceptor.h"
 
-#include <QKeyEvent>
-#include <QApplication>
+#include <QtGui/QKeyEvent>
+#include <QtGui/QApplication>
 
 #ifdef HARMATTAN_ZOOMINTERCEPTOR
 #include <policy/resource-set.h>

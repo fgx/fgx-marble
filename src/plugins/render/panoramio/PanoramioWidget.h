@@ -13,8 +13,8 @@
 
 #include "AbstractDataPluginWidget.h"
 
-#include <QDate>
-#include <QPixmap>
+#include <QtCore/QDate>
+#include <QtGui/QPixmap>
 
 namespace Marble
 {

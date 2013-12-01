@@ -10,8 +10,8 @@
 #include "KmzHandler.h"
 #include "MarbleDebug.h"
 
-#include <QTemporaryFile>
-#include <QDir>
+#include <QtCore/QTemporaryFile>
+#include <QtCore/QDir>
 
 #include <quazip/quazip.h>
 #include <quazip/quazipfile.h>

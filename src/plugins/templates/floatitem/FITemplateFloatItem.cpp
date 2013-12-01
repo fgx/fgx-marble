@@ -13,10 +13,10 @@
 #include "FITemplateFloatItem.h"
 
 // Qt
-#include <QRect>
-#include <QColor>
-#include <QPixmap>
-#include <QSvgRenderer>
+#include <QtCore/QRect>
+#include <QtGui/QColor>
+#include <QtGui/QPixmap>
+#include <QtSvg/QSvgRenderer>
 
 // Marble
 #include "MarbleDebug.h"

@@ -12,8 +12,8 @@
 #include "logger.h"
 #include "upload.h"
 
-#include <QCoreApplication>
-#include <QDebug>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QDebug>
 
 void usage(const QString &app)
 {

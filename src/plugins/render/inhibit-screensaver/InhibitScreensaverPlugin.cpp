@@ -14,9 +14,9 @@
 #include "MarbleDebug.h"
 #include "MarbleModel.h"
 
-#include <QTimer>
-#include <QDBusConnection>
-#include <QDBusInterface>
+#include <QtCore/QTimer>
+#include <QtDBus/QDBusConnection>
+#include <QtDBus/QDBusInterface>
 
 namespace Marble {
 

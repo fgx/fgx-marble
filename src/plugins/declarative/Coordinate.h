@@ -12,13 +12,9 @@
 #define MARBLE_DECLARATIVE_COORDINATE_H
 
 #include "GeoDataCoordinates.h"
-#include <QObject>
 
-#if QT_VERSION < 0x050000
-  #include <QtDeclarative>
-#else
-  #include <QtQml/qqml.h>
-#endif
+#include <QtCore/QObject>
+#include <QtDeclarative/QtDeclarative>
 
 /**
   * Represents a coordinate with the properties of a name and coordinates

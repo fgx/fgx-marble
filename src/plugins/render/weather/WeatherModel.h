@@ -17,7 +17,7 @@
 #include "GeoDataLatLonAltBox.h"
 #include "MarbleWidget.h"
 
-#include <QStringList>
+#include <QtCore/QStringList>
 
 class QByteArray;
 class QTimer;
@@ -56,9 +56,13 @@ class WeatherModel : public AbstractDataPluginModel
 
  Q_SIGNALS:
     void additionalItemsRequested( const GeoDataLatLonAltBox &,
+                                   const MarbleModel *,
                                    qint32 number );
     void favoriteItemChanged( const QString& id, bool isFavorite );
     void parseFileRequested( const QByteArray& file );
+
+ private Q_SLOTS:
+    void updateItems();
 
  protected:
     void getAdditionalItems( const GeoDataLatLonAltBox& box,
@@ -67,10 +71,14 @@ class WeatherModel : public AbstractDataPluginModel
     void parseFile( const QByteArray& file );
 
  private:
+    void createServices();
     void addService( AbstractWeatherService *service );
 
+    bool m_initialized;
     QList<AbstractWeatherService*> m_services;
     QTimer *m_timer;
+    GeoDataLatLonAltBox m_lastBox;
+    qint32 m_lastNumber;
 };
 
 } // namespace Marble

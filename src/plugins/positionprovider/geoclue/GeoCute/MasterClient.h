@@ -11,7 +11,7 @@
 #ifndef GEOCUTE_MASTERCLIENT_H
 #define GEOCUTE_MASTERCLIENT_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include "AccuracyLevel.h"
 

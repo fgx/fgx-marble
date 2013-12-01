@@ -14,7 +14,7 @@
 #include "MarbleDebug.h"
 #include "routing/VoiceNavigationModel.h"
 
-#include <QDirIterator>
+#include <QtCore/QDirIterator>
 #include <phonon/MediaObject>
 #include <phonon/MediaSource>
 #include <phonon/AudioOutput>

@@ -12,7 +12,7 @@
 #define OPENCACHINGMODEL_H
 
 #include "AbstractDataPluginModel.h"
-#include <QDateTime>
+#include <QtCore/QDateTime>
 
 namespace Marble
 {

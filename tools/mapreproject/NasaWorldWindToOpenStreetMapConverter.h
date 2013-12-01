@@ -4,10 +4,10 @@
 #include "mapreproject.h"
 #include "ReadOnlyMapDefinition.h"
 
-#include <QDir>
-#include <QObject>
-#include <QPair>
-#include <QVector>
+#include <QtCore/QDir>
+#include <QtCore/QObject>
+#include <QtCore/QPair>
+#include <QtCore/QVector>
 
 class OsmTileClusterRenderer;
 class Thread;

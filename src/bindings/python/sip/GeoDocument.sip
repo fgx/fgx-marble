@@ -87,8 +87,6 @@ protected:
                 sipType = sipType_Marble_GeoDataOverlay;
                 if (dynamic_cast<Marble::GeoDataGroundOverlay*>(sipCpp))
                     sipType = sipType_Marble_GeoDataGroundOverlay;
-                else if (dynamic_cast<Marble::GeoDataGroundOverlay*>(sipCpp))
-                    sipType = sipType_Marble_GeoDataGroundOverlay;
                 }
             else if (dynamic_cast<Marble::GeoDataPlacemark*>(sipCpp))
                 sipType = sipType_Marble_GeoDataPlacemark;

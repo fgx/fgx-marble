@@ -8,11 +8,11 @@
 // Copyright 2012      Dennis Nienhüser <earthwings@gentoo.org>
 //
 
-#include <QApplication>
+#include <QtGui/QApplication>
 #include <marble/MarbleWidget.h>
 #include <marble/MarbleModel.h>
-#include <routing/RouteRequest.h>
-#include <routing/RoutingManager.h>
+#include <marble/RouteRequest.h>
+#include <marble/RoutingManager.h>
 
 using namespace Marble;
 

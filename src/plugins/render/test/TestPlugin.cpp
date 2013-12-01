@@ -10,9 +10,9 @@
 
 #include "TestPlugin.h"
 
-#include <QColor>
-#include <QPixmap>
-#include <QRadialGradient>
+#include <QtGui/QColor>
+#include <QtGui/QPixmap>
+#include <QtGui/QRadialGradient>
 #include "MarbleDirs.h"
 #include "GeoPainter.h"
 #include "GeoDataCoordinates.h"

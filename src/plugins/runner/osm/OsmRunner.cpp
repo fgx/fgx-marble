@@ -12,7 +12,7 @@
 #include "GeoDataDocument.h"
 #include "OsmParser.h"
 
-#include <QFile>
+#include <QtCore/QFile>
 
 namespace Marble
 {

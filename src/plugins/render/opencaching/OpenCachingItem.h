@@ -14,8 +14,8 @@
 #include "AbstractDataPluginItem.h"
 #include "OpenCachingCache.h"
 
-#include <QDate>
-#include <QPixmap>
+#include <QtCore/QDate>
+#include <QtGui/QPixmap>
 
 class QFont;
 

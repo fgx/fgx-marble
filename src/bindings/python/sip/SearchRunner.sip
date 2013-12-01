@@ -29,8 +29,8 @@ public:
     explicit                SearchRunner (QObject* parent /TransferThis/ = 0);
     void                    setModel (const Marble::MarbleModel* model);
     virtual void            search (const QString& searchTerm, const Marble::GeoDataLatLonAltBox& preferred)=0;
-// FIXME
 signals:
+// FIXME
 //ig    void                    searchFinished (QVector<Marble::GeoDataPlacemark*> result);
 protected:
     const Marble::MarbleModel*  model () const;

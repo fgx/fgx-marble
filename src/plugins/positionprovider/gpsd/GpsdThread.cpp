@@ -10,7 +10,7 @@
 
 #include "GpsdThread.h"
 
-#include <QMetaType>
+#include <QtCore/QMetaType>
 
 #include "GpsdConnection.h"
 

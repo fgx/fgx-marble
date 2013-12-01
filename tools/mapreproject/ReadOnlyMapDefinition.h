@@ -3,8 +3,8 @@
 
 #include "mapreproject.h"
 
-#include <QDebug>
-#include <QString>
+#include <QtCore/QDebug>
+#include <QtCore/QString>
 
 class InterpolationMethod;
 class ReadOnlyMapImage;

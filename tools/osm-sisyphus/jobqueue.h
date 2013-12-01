@@ -13,8 +13,8 @@
 
 #include "job.h"
 
-#include <QObject>
-#include <QList>
+#include <QtCore/QObject>
+#include <QtCore/QList>
 
 class JobQueue : public QObject
 {

@@ -13,8 +13,8 @@
 
 #include "PositionProviderPlugin.h"
 
-#include <QObject>
-#include <QTimer>
+#include <QtCore/QObject>
+#include <QtCore/QTimer>
 
 #include <libgpsmm.h>
 

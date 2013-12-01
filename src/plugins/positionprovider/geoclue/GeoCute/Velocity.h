@@ -11,7 +11,7 @@
 #ifndef GEOCUTE_VELOCITY_H
 #define GEOCUTE_VELOCITY_H
 
-#include <QFlags>
+#include <QtCore/QFlags>
 
 
 

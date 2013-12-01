@@ -40,11 +40,7 @@ public:
     if (dynamic_cast<Marble::ParseRunnerPlugin*>(sipCpp))
         sipType = sipType_Marble_ParseRunnerPlugin;
     else if (dynamic_cast<Marble::PositionProviderPluginInterface*>(sipCpp))
-        {
         sipType = sipType_Marble_PositionProviderPluginInterface;
-        if (dynamic_cast<Marble::PositionProviderPlugin*>(sipCpp))
-            sipType = sipType_Marble_PositionProviderPlugin;
-        }
     else if (dynamic_cast<Marble::RenderPlugin*>(sipCpp))
         {
         sipType = sipType_Marble_RenderPlugin;
@@ -85,7 +81,6 @@ class PluginAuthor
 #include <AbstractFloatItem.h>
 #include <ParseRunnerPlugin.h>
 #include <PluginInterface.h>
-#include <PositionProviderPlugin.h>
 #include <PositionProviderPluginInterface.h>
 #include <RenderPlugin.h>
 #include <ReverseGeocodingRunnerPlugin.h>

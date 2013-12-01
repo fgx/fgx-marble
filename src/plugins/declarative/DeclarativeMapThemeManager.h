@@ -13,14 +13,9 @@
 
 #include "MapThemeManager.h"
 
-#if QT_VERSION <= 0x050000
-  #include <QDeclarativeImageProvider>
-  typedef QDeclarativeImageProvider QQuickImageProvider;
-#else
-  #include <QQuickImageProvider>
-#endif
+#include <QtDeclarative/QDeclarativeImageProvider>
 
-class MapThemeImageProvider : public QQuickImageProvider
+class MapThemeImageProvider : public QDeclarativeImageProvider
 {
 public:
     MapThemeImageProvider();

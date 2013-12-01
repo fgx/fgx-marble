@@ -11,8 +11,8 @@
 #ifndef FLICKRPARSER_H
 #define FLICKRPARSER_H
 
-#include <QList>
-#include <QXmlStreamReader>
+#include <QtCore/QList>
+#include <QtCore/QXmlStreamReader>
 
 class QByteArray;
 class QObject;

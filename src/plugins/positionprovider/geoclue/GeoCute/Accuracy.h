@@ -12,8 +12,8 @@
 #ifndef GEOCUTE_ACCURACY_H
 #define GEOCUTE_ACCURACY_H
 
-#include <QMetaType>
-#include <QtGlobal>
+#include <QtCore/QMetaType>
+#include <QtCore/QtGlobal>
 
 #include "AccuracyLevel.h"
 

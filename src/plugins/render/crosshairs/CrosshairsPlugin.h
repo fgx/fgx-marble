@@ -16,7 +16,7 @@
 #ifndef MARBLE_CROSSHAIRSPLUGIN_H
 #define MARBLE_CROSSHAIRSPLUGIN_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include "RenderPlugin.h"
 #include "DialogConfigurationInterface.h"
@@ -39,7 +39,6 @@ namespace Marble
 class CrosshairsPlugin : public RenderPlugin, public DialogConfigurationInterface
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.CrosshairsPlugin" )
     Q_INTERFACES( Marble::RenderPluginInterface )
     Q_INTERFACES( Marble::DialogConfigurationInterface )
     MARBLE_PLUGIN(CrosshairsPlugin)

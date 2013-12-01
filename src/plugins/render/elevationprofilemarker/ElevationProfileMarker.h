@@ -27,7 +27,6 @@ class GeoDataPlacemark;
 class ElevationProfileMarker : public RenderPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.ElevationProfileMarker" )
 
     Q_INTERFACES( Marble::RenderPluginInterface )
 

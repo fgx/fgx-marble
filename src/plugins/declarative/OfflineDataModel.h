@@ -13,7 +13,7 @@
 
 #include "NewstuffModel.h"
 
-#include <QSortFilterProxyModel>
+#include <QtGui/QSortFilterProxyModel>
 
 class OfflineDataModel : public QSortFilterProxyModel
 {
@@ -36,12 +36,8 @@ public:
 
     explicit OfflineDataModel( QObject* parent = 0 );
 
-    /** @todo FIXME https://bugreports.qt-project.org/browse/QTCOMPONENTS-1206 */
+    /** @todo FIXME https://bugreports.qt.nokia.com/browse/QTCOMPONENTS-1206 */
     int count();
-
-#if QT_VERSION >= 0x050000
-    QHash<int, QByteArray> roleNames() const;
-#endif
 
     virtual QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
 
@@ -85,10 +81,6 @@ private:
     Marble::NewstuffModel m_newstuffModel;
 
     VehicleTypes m_vehicleTypeFilter;
-
-#if QT_VERSION >= 0x050000
-    QHash<int, QByteArray> m_roleNames;
-#endif
 };
 
 #endif

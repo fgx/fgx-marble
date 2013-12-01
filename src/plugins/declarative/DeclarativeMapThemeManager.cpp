@@ -13,12 +13,12 @@
 #include "GeoSceneDocument.h"
 #include "GeoSceneHead.h"
 
-#include <QIcon>
-#include <QStandardItemModel>
-#include <QDebug>
+#include <QtGui/QIcon>
+#include <QtGui/QStandardItemModel>
+#include <QtCore/QDebug>
 
 MapThemeImageProvider::MapThemeImageProvider() :
-        QQuickImageProvider( QQuickImageProvider::Pixmap )
+        QDeclarativeImageProvider( QDeclarativeImageProvider::Pixmap )
 {
     // nothing to do
 }
@@ -33,7 +33,7 @@ QPixmap MapThemeImageProvider::requestPixmap( const QString &id, QSize *size, co
     QStandardItemModel *model = m_mapThemeManager.mapThemeModel();
     for( int i = 0; i < model->rowCount(); ++i ) {
         if ( model->data( model->index( i, 0 ), Qt::UserRole + 1 ) == id ) {
-            QIcon icon = model->data( model->index( i, 0 ), Qt::DecorationRole ).value<QIcon>();
+            QIcon icon = qVariantValue<QIcon>( model->data( model->index( i, 0 ), Qt::DecorationRole ) );
             QPixmap result = icon.pixmap( resultSize );
             return result;
         }

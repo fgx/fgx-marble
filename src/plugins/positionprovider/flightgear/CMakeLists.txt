@@ -6,9 +6,7 @@ INCLUDE_DIRECTORIES(
  ${QT_INCLUDE_DIR}
 )
 set( QT_USE_QTNETWORK  ON )
-if( QT4_FOUND )
-  INCLUDE(${QT_USE_FILE})
-endif()
+INCLUDE(${QT_USE_FILE})
 
 set( flightgear_SRCS FlightGearPositionProviderPlugin.cpp )
 set( FlightGearPositionProviderPlugin_LIBS )

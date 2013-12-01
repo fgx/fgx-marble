@@ -8,14 +8,14 @@
 // Copyright 2012      Dennis Nienhüser <earthwings@gentoo.org>
 //
 
-#include <QDebug>
-#include <QFileInfo>
-#include <QApplication>
-#include <QTreeView>
+#include <QtCore/QDebug>
+#include <QtCore/QFileInfo>
+#include <QtGui/QApplication>
+#include <QtGui/QTreeView>
 
 #include <marble/MarbleWidget.h>
 #include <marble/MarbleModel.h>
-#include <marble/ParsingRunnerManager.h>
+#include <marble/MarbleRunnerManager.h>
 #include <marble/GeoDataTreeModel.h>
 
 using namespace Marble;
@@ -31,7 +31,7 @@ int main(int argc, char** argv)
     }
 
     MarbleModel model;
-    ParsingRunnerManager manager( model.pluginManager() );
+    MarbleRunnerManager manager( model.pluginManager() );
 
     GeoDataDocument* document = manager.openFile( inputFile.absoluteFilePath() );
     if ( !document ) {

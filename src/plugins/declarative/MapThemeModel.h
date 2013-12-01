@@ -11,7 +11,7 @@
 #ifndef MARBLE_DECLARATIVE_STREETMAPTHEMEMODEL_H
 #define MARBLE_DECLARATIVE_STREETMAPTHEMEMODEL_H
 
-#include <QSortFilterProxyModel>
+#include <QtGui/QSortFilterProxyModel>
 
 namespace Marble { class MapThemeManager; }
 
@@ -39,20 +39,16 @@ public:
 public:
     explicit MapThemeModel( QObject* parent = 0 );
 
-    /** @todo FIXME https://bugreports.qt-project.org/browse/QTCOMPONENTS-1206 */
-    int count() const;
-
-#if QT_VERSION >= 0x050000
-    QHash<int, QByteArray> roleNames() const;
-#endif
-
-    Q_INVOKABLE QString name( const QString &id ) const;
-
-    Q_INVOKABLE int indexOf( const QString &id ) const;
-
-    Q_INVOKABLE MapThemeFilters mapThemeFilter() const;
+    /** @todo FIXME https://bugreports.qt.nokia.com/browse/QTCOMPONENTS-1206 */
+    int count();
 
 public Q_SLOTS:
+    QString name( const QString &id );
+
+    int indexOf( const QString &id );
+
+    MapThemeFilters mapThemeFilter() const;
+
     void setMapThemeFilter( MapThemeFilters filters );
 
 Q_SIGNALS:
@@ -73,10 +69,6 @@ private:
     QList<QString> m_streetMapThemeIds;
 
     MapThemeFilters m_mapThemeFilters;
-
-#if QT_VERSION >= 0x050000
-    QHash<int, QByteArray> m_roleNames;
-#endif
 };
 
 #endif

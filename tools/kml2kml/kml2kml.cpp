@@ -15,7 +15,7 @@
 #include <GeoDataParser.h>
 #include <GeoWriter.h>
 
-#include <QFile>
+#include <QtCore/QFile>
 #include <iostream>
 
 using namespace std;
@@ -25,7 +25,6 @@ int main(int argc, char** argv)
 {
   if (argc != 3) {
     cout << "Usage: " << argv[0] << " input.kml output.kml" << endl;
-    return 0;
   }
 
   QFile file(argv[1]);

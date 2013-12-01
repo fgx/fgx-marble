@@ -33,13 +33,13 @@
 #include "layers/PopupLayer.h"
 
 // Qt
-#include <QAction>
-#include <QIcon>
-#include <QFile>
-#include <QHash>
-#include <QUrl>
-#include <QMouseEvent>
-#include <QPixmap>
+#include <QtGui/QAction>
+#include <QtGui/QIcon>
+#include <QtCore/QFile>
+#include <QtCore/QHash>
+#include <QtCore/QUrl>
+#include <QtGui/QMouseEvent>
+#include <QtGui/QPixmap>
 
 using namespace Marble;
 
@@ -51,7 +51,7 @@ PhotoPluginItem::PhotoPluginItem( MarbleWidget *widget, QObject *parent )
 {
     m_action = new QAction( this );
     connect( m_action, SIGNAL(triggered()), this, SLOT(openBrowser()) );
-    setCacheMode( ItemCoordinateCache );
+    setCacheMode( MarbleGraphicsItem::ItemCoordinateCache );
 
     m_image.setFrame( FrameGraphicsItem::ShadowFrame );
     m_image.setBorderBrush( QBrush( QColor( Qt::white ) ) );

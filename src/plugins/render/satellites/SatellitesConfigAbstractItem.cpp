@@ -12,7 +12,7 @@
 
 #include "MarbleDebug.h"
 
-#include <QVariant>
+#include <QtCore/QVariant>
 
 namespace Marble {
 

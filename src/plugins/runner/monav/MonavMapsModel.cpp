@@ -10,7 +10,7 @@
 
 #include "MonavMapsModel.h"
 
-#include <QDate>
+#include <QtCore/QDate>
 
 namespace Marble
 {
@@ -28,8 +28,7 @@ void MonavMapsModel::deleteMapFiles( int row )
 void MonavMapsModel::setInstallableVersions( const QMap<QString, QString> remoteMaps )
 {
     m_remoteMaps = remoteMaps;
-    beginResetModel();
-    endResetModel();
+    reset();
 }
 
 MonavMapsModel::MonavMapsModel( const QVector<MonavMap> &data, QObject * parent ) :

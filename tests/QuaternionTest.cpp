@@ -8,8 +8,8 @@
 // Copyright 2011       Bernhard Beschow <bbeschow@cs.tu-berlin.de>
 //
 
-#include <QMetaType>
-#include <QtTest>
+#include <QtCore/QMetaType>
+#include <QtTest/QtTest>
 #include "Quaternion.h"
 #include "MarbleGlobal.h"
 #include "TestUtils.h"

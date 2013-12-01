@@ -8,7 +8,7 @@
 // Copyright 2012       Bernhard Beschow <bbeschow@cs.tu-berlin.de>
 //
 
-#include <QtTest>
+#include <QtTest/QtTest>
 #include "GeoDataTrack.h"
 #include "GeoDataPlacemark.h"
 #include "PositionProviderPlugin.h"

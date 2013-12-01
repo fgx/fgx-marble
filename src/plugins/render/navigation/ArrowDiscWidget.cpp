@@ -13,10 +13,10 @@
 #include "MarbleWidget.h"
 
 #include <qmath.h>
-#include <QPainter>
-#include <QMouseEvent>
-#include <QPixmapCache>
-#include <QPainterPath>
+#include <QtGui/QPainter>
+#include <QtGui/QMouseEvent>
+#include <QtGui/QPixmapCache>
+#include <QtGui/QPainterPath>
 
 namespace Marble
 {

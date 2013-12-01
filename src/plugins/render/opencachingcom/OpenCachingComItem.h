@@ -14,8 +14,8 @@
 #include "AbstractDataPluginItem.h"
 // #include "OpenCachingComCache.h"
 
-#include <QDate>
-#include <QPixmap>
+#include <QtCore/QDate>
+#include <QtGui/QPixmap>
 #include <QVariant>
 
 class QAction;
@@ -34,7 +34,7 @@ class OpenCachingComItem : public AbstractDataPluginItem
     Q_OBJECT
 
 public:
-    OpenCachingComItem( QVariantMap cache, OpenCachingComModel *parent );
+    OpenCachingComItem( QVariantMap cache, QObject *parent );
 
     ~OpenCachingComItem();
 
@@ -71,9 +71,9 @@ private:
     void fillDialogTabs(); ///< loads description, hint and logs into the dialog tabs
 
     Ui::CacheDetailsDialog *m_ui; ///< 0 unless dialog exists
-    OpenCachingComModel *const m_model;
+    OpenCachingComModel *m_model;
     QVariantMap m_cache;
-    QAction *const m_action;
+    QAction *m_action;
     QStringList m_images;
 };
 

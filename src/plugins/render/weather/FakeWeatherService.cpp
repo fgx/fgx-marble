@@ -20,8 +20,8 @@
 
 using namespace Marble;
 
-FakeWeatherService::FakeWeatherService( const MarbleModel *model, QObject *parent )
-    : AbstractWeatherService( model, parent )
+FakeWeatherService::FakeWeatherService( QObject *parent )
+    : AbstractWeatherService( parent )
 {
 }
 
@@ -30,11 +30,13 @@ FakeWeatherService::~FakeWeatherService()
 }
     
 void FakeWeatherService::getAdditionalItems( const GeoDataLatLonAltBox& box,
+                         const MarbleModel *model,
                          qint32 number )
 {
     Q_UNUSED( box );
     Q_UNUSED( number );
-
+    Q_UNUSED( model );
+    
     FakeWeatherItem *item = new FakeWeatherItem( this );
     item->setStationName( "Fake" );
     item->setPriority( 0 );
@@ -50,9 +52,9 @@ void FakeWeatherService::getAdditionalItems( const GeoDataLatLonAltBox& box,
     emit createdItems( QList<AbstractDataPluginItem*>() << item );
 }
 
-void FakeWeatherService::getItem( const QString & )
+void FakeWeatherService::getItem( const QString &, const MarbleModel *model )
 {
-    getAdditionalItems( GeoDataLatLonAltBox(), 1 );
+    getAdditionalItems( GeoDataLatLonAltBox(), model, 1 );
 }
 
 #include "FakeWeatherService.moc"

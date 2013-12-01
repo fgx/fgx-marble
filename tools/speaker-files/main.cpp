@@ -33,18 +33,18 @@
   *
   */
 
-#include <QCoreApplication>
-#include <QString>
-#include <QDebug>
-#include <QFileInfo>
-#include <QDir>
-#include <QVariant>
-#include <QTemporaryFile>
-#include <QProcess>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QString>
+#include <QtCore/QDebug>
+#include <QtCore/QFileInfo>
+#include <QtCore/QDir>
+#include <QtCore/QVariant>
+#include <QtCore/QTemporaryFile>
+#include <QtCore/QProcess>
 
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlError>
 
 QStringList tomTomFiles()
 {

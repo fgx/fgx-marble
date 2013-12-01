@@ -12,12 +12,12 @@
 
 #include <cmath>
 
-#include <QCoreApplication>
-#include <QDebug>
-#include <QFile>
-#include <QVector>
-#include <QStringList>
-#include "Quaternion.h"
+#include <QtCore/QCoreApplication>
+#include <QtCore/QDebug>
+#include <QtCore/QFile>
+#include <QtCore/QVector>
+#include <QtCore/QStringList>
+#include "../../src/lib/Quaternion.h"
 
 using namespace Marble;
 
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
     QCoreApplication  app( argc, argv );
 
 
-    if ( argc != 4 || strcmp( argv[ 1 ], "-o" ) != 0 )
+    if ( strcmp( argv[ 1 ], "-o" ) != 0 || argc != 4)
     {
         qDebug(" dateline -o targetfile sourcefile");
         return 0;

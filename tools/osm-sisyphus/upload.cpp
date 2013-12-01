@@ -12,13 +12,13 @@
 
 #include "logger.h"
 
-#include <QDebug>
-#include <QProcess>
-#include <QDateTime>
-#include <QDir>
-#include <QTemporaryFile>
-#include <QUrl>
-#include <QDomDocument>
+#include <QtCore/QDebug>
+#include <QtCore/QProcess>
+#include <QtCore/QDateTime>
+#include <QtCore/QDir>
+#include <QtCore/QTemporaryFile>
+#include <QtCore/QUrl>
+#include <QtXml/QDomDocument>
 
 Upload::Upload(QObject *parent) :
     QObject(parent), m_uploadFiles(true)
@@ -301,5 +301,3 @@ QString Upload::releaseDate() const
 {
     return QDateTime::currentDateTime().toString("MM/dd/yy");
 }
-
-#include "upload.moc"
