@@ -3,10 +3,10 @@
 #include "OsmTileClusterRenderer.h"
 #include "Thread.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QMetaObject>
-#include <QtCore/QString>
-#include <QtCore/QThread>
+#include <QDebug>
+#include <QMetaObject>
+#include <QString>
+#include <QThread>
 
 #include <cmath>
 
@@ -146,3 +146,5 @@ void NasaWorldWindToOpenStreetMapConverter::incNextCluster()
             emit finished();
     }
 }
+
+#include "NasaWorldWindToOpenStreetMapConverter.moc"

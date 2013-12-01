@@ -12,7 +12,7 @@
 #ifndef NAVIGATION_FLOAT_ITEM_H
 #define NAVIGATION_FLOAT_ITEM_H
 
-#include <QtCore/QObject>
+#include <QObject>
 #include <QMenu>
 
 #include "MarbleGlobal.h"
@@ -37,6 +37,7 @@ class WidgetGraphicsItem;
 class NavigationFloatItem: public AbstractFloatItem
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.NavigationFloatItem" )
 
     Q_INTERFACES( Marble::RenderPluginInterface )
 

@@ -10,7 +10,8 @@
 #ifndef LATLONEDITPLUGIN_H
 #define LATLONEDITPLUGIN_H
 
-#include <QtDesigner/QDesignerCustomWidgetInterface>
+#include <QDesignerCustomWidgetInterface>
+#include <marble_export.h>
 
 class QObject;
 class QString;
@@ -21,6 +22,7 @@ class LatLonEditPlugin : public QObject,
                          public QDesignerCustomWidgetInterface
 {
 	Q_OBJECT
+    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.LatLonEditPlugin" )
 	Q_INTERFACES(QDesignerCustomWidgetInterface)
 public:
 	explicit LatLonEditPlugin(QObject *parent = 0);

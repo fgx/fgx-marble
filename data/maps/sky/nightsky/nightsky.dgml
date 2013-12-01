@@ -44,7 +44,7 @@
         </map>
 
         <settings>
--            <group name="Places">
+            <group name="Places">
                 <property name="places">
                     <value>true</value>
                     <available>true</available>
@@ -63,7 +63,7 @@
                 </property>
             </group>
 
--            <group name="Boundaries">
+            <group name="Boundaries">
                 <property name="borders">
                     <value>true</value>
                     <available>true</available>

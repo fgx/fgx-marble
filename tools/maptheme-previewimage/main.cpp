@@ -8,13 +8,13 @@
 // Copyright 2013      Dennis Nienhüser <earthwings@gentoo.org>
 //
 
-#include <marble/MarbleWidget.h>
-#include <marble/RenderPlugin.h>
+#include <MarbleWidget.h>
+#include <RenderPlugin.h>
 
-#include <QtCore/QDebug>
-#include <QtGui/QApplication>
-#include <QtGui/QPixmap>
-#include <QtGui/QPainter>
+#include <QDebug>
+#include <QApplication>
+#include <QPixmap>
+#include <QPainter>
 
 using namespace Marble;
 

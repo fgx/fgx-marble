@@ -15,8 +15,13 @@
 
 #include "GeoDataPlacemark.h"
 
-#include <QtCore/QObject>
-#include <QtDeclarative/QtDeclarative>
+#include <QObject>
+#include <QAbstractListModel>
+#if QT_VERSION < 0x050000
+  #include <QDeclarativeComponent>
+#else
+  #include <QQmlComponent>
+#endif
 
 /**
   * Wraps a GeoDataPlacemark for QML access

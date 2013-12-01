@@ -8,16 +8,16 @@
 // Copyright 2009      Andrew Manson <g.real.ate@gmail.com>
 //
 
-#include <QtCore/QObject>
-#include <QtTest/QtTest>
+#include <QObject>
+#include <QtTest>
 
 #include "GeoDataParser.h"
 #include "GeoDataDocument.h"
 #include "GeoDataColorStyle.h"
 #include "GeoWriter.h"
 
-#include <QtCore/QDir>
-#include <QtCore/QFile>
+#include <QDir>
+#include <QFile>
 
 using namespace Marble;
 
@@ -71,7 +71,7 @@ void TestGeoDataWriter::initTestCase()
         QVERIFY( file.open( QIODevice::ReadOnly ) );
 
         //Parser and verify
-        QVERIFY2( parser->read( &file ), filename.toAscii() );
+        QVERIFY2( parser->read( &file ), filename.toLatin1() );
 
         parsers.insert( filename, parserPointer );
 

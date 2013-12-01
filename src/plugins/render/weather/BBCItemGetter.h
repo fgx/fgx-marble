@@ -16,9 +16,9 @@
 #include "GeoDataLatLonAltBox.h"
 
 // Qt
-#include <QtCore/QList>
-#include <QtCore/QMutex>
-#include <QtCore/QThread>
+#include <QList>
+#include <QMutex>
+#include <QThread>
 
 namespace Marble
 {
@@ -35,7 +35,6 @@ class BBCItemGetter : public AbstractWorkerThread
     ~BBCItemGetter();
 
     void setSchedule( const GeoDataLatLonAltBox& box,
-                      const MarbleModel *model,
                       qint32 number );
 
     void setStationList( const QList<BBCStation>& items );

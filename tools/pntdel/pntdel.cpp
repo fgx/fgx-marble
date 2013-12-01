@@ -9,15 +9,15 @@
 //
 
 
-#include <QtGui/QApplication>
-#include <QtCore/QDataStream>
-#include <QtCore/QFile>
-#include <QtCore/QDebug>
-#include <QtCore/QStringList>
+#include <QCoreApplication>
+#include <QDataStream>
+#include <QFile>
+#include <QDebug>
+#include <QStringList>
 
 int main(int argc, char *argv[])
 {
-    QApplication  app(argc, argv);
+    QCoreApplication  app(argc, argv);
 
     qDebug( " Syntax: pntdel [-i pnt-sourcefile -o pnt-targetfile -id idNumber] " );
 

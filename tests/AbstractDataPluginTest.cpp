@@ -8,7 +8,7 @@
 // Copyright 2012       Bernhard Beschow <bbeschow@cs.tu-berlin.de>
 //
 
-#include <QtTest/QtTest>
+#include <QtTest>
 
 #include "MarbleModel.h"
 #include "PluginManager.h"
@@ -40,7 +40,7 @@ void AbstractDataPluginTest::initialize_data()
         if ( !dataPlugin )
             continue;
 
-        QTest::newRow( plugin->nameId().toAscii() ) << dataPlugin;
+        QTest::newRow( plugin->nameId().toLatin1() ) << dataPlugin;
     }
 }
 

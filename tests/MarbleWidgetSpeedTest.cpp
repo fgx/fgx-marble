@@ -10,10 +10,11 @@
 // Copyright 2007      Tim Sutton   <tim@linfiniti.com>
 //
 
-#include <QtGui/QtGui> //needed because this is a gui test
-#include <QtTest/QtTest>
-#include <QtCore/QtCore>
-#include <QtCore/QTime>
+#include <QtGui> //needed because this is a gui test
+#include <QtTest>
+#include <QtCore>
+#include <QTime>
+#include <QApplication>
 #include "MarbleDirs.h"
 #include "MarbleWidget.h"
 

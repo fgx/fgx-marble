@@ -22,7 +22,6 @@ namespace Marble
 class GeoDataGroundOverlay : Marble::GeoDataOverlay
 {
 %TypeHeaderCode
-#include <GeoDataOverlay.h>
 #include <GeoDataGroundOverlay.h>
 %End
 
@@ -37,5 +36,8 @@ public:
     void                    setAltitudeMode (const Marble::AltitudeMode altitudeMode);
     Marble::GeoDataLatLonBox&  latLonBox () const;
     void                    setLatLonBox (const Marble::GeoDataLatLonBox& box);
+//ig    const GeoDataLatLonQuad&  latLonQuad () const;
+//ig    GeoDataLatLonQuad&      latLonQuad ();
+//ig    void                    setLatLonQuad (const GeoDataLatLonQuad& quad);
 };
 };

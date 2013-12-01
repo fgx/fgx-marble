@@ -11,8 +11,8 @@
 #include "jobqueue.h"
 #include "logger.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QThreadPool>
+#include <QDebug>
+#include <QThreadPool>
 
 JobQueue::JobQueue(QObject *parent) :
     QObject(parent), m_maxConcurrentJobs(1)
@@ -61,3 +61,5 @@ void JobQueue::startJob(Job *job)
     m_runningJobs << job;
     QThreadPool::globalInstance()->start(job);
 }
+
+#include "jobqueue.moc"

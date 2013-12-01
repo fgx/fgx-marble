@@ -3,10 +3,12 @@ PROJECT( AnnotatePlugin )
 INCLUDE_DIRECTORIES(
  ${CMAKE_CURRENT_SOURCE_DIR}
  ${CMAKE_CURRENT_BINARY_DIR}
- ${CMAKE_SOURCE_DIR}/src/lib/geodata/handlers/kml
+ ${CMAKE_SOURCE_DIR}/src/lib/marble/geodata/handlers/kml
  ${QT_INCLUDE_DIR}
 )
-INCLUDE(${QT_USE_FILE})
+if( QT4_FOUND )
+  INCLUDE(${QT_USE_FILE})
+endif()
 
 set( annotate_SRCS
   AnnotatePlugin.cpp

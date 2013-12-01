@@ -11,8 +11,12 @@
 #ifndef MARBLE_DECLARATIVE_NAVIGATION_H
 #define MARBLE_DECLARATIVE_NAVIGATION_H
 
-#include <QtCore/QObject>
-#include <QtDeclarative/QtDeclarative>
+#include <QObject>
+#if QT_VERSION < 0x050000
+  #include <QtDeclarative/qdeclarative.h>
+#else
+  #include <QtQml/qqml.h>
+#endif
 
 class QAbstractItemModel;
 

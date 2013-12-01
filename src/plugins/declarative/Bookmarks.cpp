@@ -23,7 +23,7 @@
 #include "GeoDataTreeModel.h"
 #include "kdescendantsproxymodel.h"
 
-#include <QtGui/QSortFilterProxyModel>
+#include <QSortFilterProxyModel>
 
 Bookmarks::Bookmarks( QObject* parent ) : QObject( parent ),
     m_marbleWidget( 0 ), m_proxyModel( 0 )
@@ -142,10 +142,12 @@ BookmarksModel *Bookmarks::model()
 
 BookmarksModel::BookmarksModel( QObject *parent ) : QSortFilterProxyModel( parent )
 {
+#if QT_VERSION < 0x050000
     // Workaround for https://bugreports.qt-project.org/browse/QTCOMPONENTS-1206
     QHash<int,QByteArray> roles = roleNames();
     roles[Qt::DisplayRole] = "name";
     setRoleNames( roles );
+#endif
 
     connect( this, SIGNAL(layoutChanged()), this, SIGNAL(countChanged()) );
     connect( this, SIGNAL(modelReset()), this, SIGNAL(countChanged()) );
@@ -162,7 +164,7 @@ qreal BookmarksModel::longitude( int idx )
 {
     if ( idx >= 0 && idx < rowCount() ) {
         QVariant const value = data( index( idx, 0 ), Marble::MarblePlacemarkModel::CoordinateRole );
-        Marble::GeoDataCoordinates const coordinates = qVariantValue<Marble::GeoDataCoordinates>( value );
+        Marble::GeoDataCoordinates const coordinates = value.value<Marble::GeoDataCoordinates>();
         return coordinates.longitude( Marble::GeoDataCoordinates::Degree );
     }
     return 0.0;
@@ -172,7 +174,7 @@ qreal BookmarksModel::latitude( int idx )
 {
     if ( idx >= 0 && idx < rowCount() ) {
         QVariant const value = data( index( idx, 0 ), Marble::MarblePlacemarkModel::CoordinateRole );
-        Marble::GeoDataCoordinates const coordinates = qVariantValue<Marble::GeoDataCoordinates>( value );
+        Marble::GeoDataCoordinates const coordinates = value.value<Marble::GeoDataCoordinates>();
         return coordinates.latitude( Marble::GeoDataCoordinates::Degree );
     }
     return 0.0;

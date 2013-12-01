@@ -8,8 +8,8 @@
 // Copyright 2013   Dennis Nienhüser <earthwings@gentoo.org>
 //
 
-#include <QtCore/QObject>
-#include <QtTest/QtTest>
+#include <QObject>
+#include <QtTest>
 
 #include <GeoDataParser.h>
 #include <GeoDataDocument.h>
@@ -31,7 +31,7 @@ private slots:
 
 void TestCamera::initTestCase()
 {
-    MarbleDebug::enable = true;
+    MarbleDebug::setEnabled( true );
 }
 
 void TestCamera::simpleParseTest()

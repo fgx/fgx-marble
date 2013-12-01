@@ -11,19 +11,19 @@
 
 #include "MapScaleFloatItem.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QRect>
-#include <QtGui/QPixmap>
-#include <QtGui/QApplication>
-#include <QtGui/QPainter>
-#include <QtGui/QPushButton>
-#include <QtGui/QMenu>
-#include <QtGui/QToolTip>
+#include <QDebug>
+#include <QRect>
+#include <QPixmap>
+#include <QApplication>
+#include <QPainter>
+#include <QPushButton>
+#include <QMenu>
+#include <QToolTip>
 
 #include "ui_MapScaleConfigWidget.h"
 #include "MarbleDebug.h"
 #include "MarbleGlobal.h"
-#include "Projections/AbstractProjection.h"
+#include "projections/AbstractProjection.h"
 #include "MarbleLocale.h"
 #include "MarbleModel.h"
 #include "ViewportParams.h"

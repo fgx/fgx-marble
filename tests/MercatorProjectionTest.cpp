@@ -8,7 +8,7 @@
 // Copyright 2011       Bernhard Beschow <bbeschow@cs.tu-berlin.de>
 //
 
-#include <QtTest/QtTest>
+#include <QtTest>
 #include "MercatorProjection.h"
 #include "ViewportParams.h"
 #include "TestUtils.h"
@@ -97,7 +97,7 @@ void MercatorProjectionTest::screenCoordinatesValidLat()
         QVERIFY( !globeHidesPoint );
     }
 
-    QVERIFY( viewport.currentProjection()->repeatX() );
+    QVERIFY( viewport.currentProjection()->repeatableX() );
 
     {
         qreal x[2];
@@ -188,7 +188,7 @@ void MercatorProjectionTest::screenCoordinatesOfCenter()
         QCOMPARE( y, 1.0 );
     }
 
-    QVERIFY( viewport.currentProjection()->repeatX() );
+    QVERIFY( viewport.currentProjection()->repeatableX() );
 
     {
         qreal x[2];

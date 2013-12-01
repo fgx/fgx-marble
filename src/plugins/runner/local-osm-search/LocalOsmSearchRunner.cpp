@@ -16,9 +16,9 @@
 #include "GeoDataDocument.h"
 #include "GeoDataPlacemark.h"
 
-#include <QtCore/QString>
-#include <QtCore/QVector>
-#include <QtCore/QUrl>
+#include <QString>
+#include <QVector>
+#include <QUrl>
 
 namespace Marble
 {
@@ -115,8 +115,7 @@ void LocalOsmSearchRunner::search( const QString &searchTerm, const GeoDataLatLo
         if ( placemark.category() != OsmPlacemark::UnknownCategory ) {
             hit->setVisualCategory( m_categoryMap[placemark.category()] );
         }
-        GeoDataCoordinates coordinate( placemark.longitude(), placemark.latitude(), 0.0, GeoDataCoordinates::Degree );
-        hit->setCoordinate( coordinate );
+        hit->setGeometry( new GeoDataPoint( placemark.longitude(), placemark.latitude(), 0.0, GeoDataCoordinates::Degree ) );
         result << hit;
     }
 

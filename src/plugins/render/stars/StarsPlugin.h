@@ -15,11 +15,11 @@
 #ifndef MARBLESTARSPLUGIN_H
 #define MARBLESTARSPLUGIN_H
 
-#include <QtCore/QObject>
-#include <QtCore/QVector>
-#include <QtCore/QVariant>
-#include <QtCore/QHash>
-#include <QtGui/QBrush>
+#include <QObject>
+#include <QVector>
+#include <QVariant>
+#include <QHash>
+#include <QBrush>
 
 #include "RenderPlugin.h"
 #include "Quaternion.h"
@@ -120,6 +120,7 @@ class Constellation;
 class StarsPlugin : public RenderPlugin, public DialogConfigurationInterface
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.StarsPlugin" )
     Q_INTERFACES(Marble::RenderPluginInterface)
     Q_INTERFACES( Marble::DialogConfigurationInterface )
     MARBLE_PLUGIN(StarsPlugin)
@@ -194,7 +195,7 @@ private:
             return defaultValue;
         }
 
-        return qVariantValue<T>( settings[key] );
+        return settings[key].value<T>();
     }
 
     void prepareNames();

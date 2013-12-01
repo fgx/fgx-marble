@@ -1,7 +1,7 @@
 include_directories(
    ${CMAKE_CURRENT_SOURCE_DIR}
    ${CMAKE_CURRENT_SOURCE_DIR}/../lib
-   ${CMAKE_CURRENT_SOURCE_DIR}/../lib/Projections
+   ${CMAKE_CURRENT_SOURCE_DIR}/../lib/projections
    ${CMAKE_CURRENT_SOURCE_DIR}/../lib/geodata
    ${CMAKE_CURRENT_SOURCE_DIR}/../lib/geodata/data
    ${CMAKE_CURRENT_SOURCE_DIR}/../lib/geodata/parser
@@ -13,7 +13,7 @@ include_directories(
 
 set(worldclock_SRCS worldclock.cpp )
 
-qt4_add_resources(worldclock_SRCS ../marble.qrc)
+qt4_add_resources(worldclock_SRCS ../apps/marble-ui/marble.qrc)
 
 kde4_add_ui_files( worldclock_SRCS worldclockConfig.ui )
 

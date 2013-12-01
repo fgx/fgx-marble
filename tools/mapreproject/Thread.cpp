@@ -40,7 +40,7 @@
 
 #include "Thread.h"
 
-#include <QtCore/QSignalMapper>
+#include <QSignalMapper>
 
 Thread::Thread( QObject * const parent )
     : QThread( parent )
@@ -87,3 +87,5 @@ void Thread::setReadyStatus()
 {
     m_waitCondition.wakeAll();
 }
+
+#include "Thread.moc"

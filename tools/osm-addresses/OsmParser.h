@@ -16,15 +16,15 @@
 #include "OsmPlacemark.h"
 #include "OsmRegionTree.h"
 
-#include "marble/GeoDataLineString.h"
-#include "marble/GeoDataPolygon.h"
+#include "GeoDataLineString.h"
+#include "GeoDataPolygon.h"
 
-#include <QtCore/QObject>
-#include <QtCore/QFileInfo>
-#include <QtCore/QMap>
-#include <QtCore/QHash>
-#include <QtCore/QList>
-#include <QtCore/QPair>
+#include <QObject>
+#include <QFileInfo>
+#include <QMap>
+#include <QHash>
+#include <QList>
+#include <QPair>
 
 namespace Marble
 {

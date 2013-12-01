@@ -12,12 +12,12 @@
 #include "WikipediaItem.h"
 
 // Qt
-#include <QtGui/QAction>
-#include <QtGui/QIcon>
-#include <QtGui/QPainter>
-#include <QtGui/QPixmap>
-#include <QtGui/QMouseEvent>
-#include <QtWebKit/QWebView>
+#include <QAction>
+#include <QIcon>
+#include <QPainter>
+#include <QPixmap>
+#include <QMouseEvent>
+#include <QWebView>
 
 // Marble
 #include "MarbleDebug.h"
@@ -47,7 +47,7 @@ WikipediaItem::WikipediaItem( MarbleWidget* widget, QObject *parent )
 {
     m_action = new QAction( this );
     connect( m_action, SIGNAL(triggered()), this, SLOT(openBrowser()) );
-    setCacheMode( MarbleGraphicsItem::ItemCoordinateCache );
+    setCacheMode( ItemCoordinateCache );
 }
 
 WikipediaItem::~WikipediaItem()

@@ -8,12 +8,12 @@
 // Copyright 2008 Patrick Spendrin  <ps_ml@gmx.de>
 //
 
-#include <QtTest/QtTest>
-#include <QtCore/QCoreApplication>
-#include <QtCore/QString>
-#include <QtCore/QBuffer>
-#include <QtCore/QByteArray>
-#include <QtCore/QDebug>
+#include <QtTest>
+#include <QCoreApplication>
+#include <QString>
+#include <QBuffer>
+#include <QByteArray>
+#include <QDebug>
 
 #include "MarbleDirs.h"
 #include "GeoDataParser.h"
@@ -122,7 +122,7 @@ void TestGeoDataPack::saveKMLToCache()
         QDataStream stream ( &cacheFile );
         dataDocument->pack( stream );
         cacheFile.close();
-        qDebug( "Saved kml document to cache: %s", path.toAscii().data() );
+        qDebug( "Saved kml document to cache: %s", path.toLatin1().data() );
     }
     qDebug() << "write Timer " << timer.elapsed();
     delete document;
@@ -140,7 +140,7 @@ void TestGeoDataPack::loadKMLFromCache()
         QDataStream stream ( &cacheFile );
         cacheDocument->unpack( stream );
         cacheFile.close();
-        qDebug( "Loaded kml document from cache: %s", path.toAscii().data() );
+        qDebug( "Loaded kml document from cache: %s", path.toLatin1().data() );
     }
     QVERIFY( cacheDocument );
     qDebug() << "read Timer " << timer.elapsed();
@@ -189,7 +189,7 @@ void TestGeoDataPack::saveCitiesToCache()
         QDataStream stream ( &cacheFile );
         dataDocument->pack( stream );
         cacheFile.close();
-        qDebug( "Saved kml document to cache: %s", path.toAscii().data() );
+        qDebug( "Saved kml document to cache: %s", path.toLatin1().data() );
     }
     QVERIFY( cacheFile.size() > 0 );
     qDebug() << "write Timer " << timer.elapsed();
@@ -208,7 +208,7 @@ void TestGeoDataPack::loadCitiesFromCache()
         QDataStream stream ( &cacheFile );
         cacheDocument->unpack( stream );
         cacheFile.close();
-        qDebug( "Loaded kml document from cache: %s", path.toAscii().data() );
+        qDebug( "Loaded kml document from cache: %s", path.toLatin1().data() );
     }
     QVERIFY( cacheDocument );
     qDebug() << "read Timer " << timer.elapsed();

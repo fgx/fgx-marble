@@ -13,11 +13,11 @@
 #ifndef POSITION_MARKER_H
 #define POSITION_MARKER_H
 
-#include <QtCore/QObject>
-#include <QtCore/QHash>
-#include <QtCore/QVector>
-#include <QtGui/QColor>
-#include <QtGui/QAbstractButton>
+#include <QObject>
+#include <QHash>
+#include <QVector>
+#include <QColor>
+#include <QAbstractButton>
 
 #include "DialogConfigurationInterface.h"
 #include "RenderPlugin.h"
@@ -35,6 +35,7 @@ namespace Marble
 class PositionMarker  : public RenderPlugin, public DialogConfigurationInterface
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.PositionMarker" )
     Q_INTERFACES( Marble::RenderPluginInterface )
     Q_INTERFACES( Marble::DialogConfigurationInterface )
     MARBLE_PLUGIN( PositionMarker )

@@ -10,8 +10,8 @@
 //
 
 
-#include <QtGui/QApplication>
-#include <QtCore/QDebug>
+#include <QCoreApplication>
+#include <QDebug>
 
 #include "svgxmlhandler.h"
 
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     QString  sourcefile;
     QString  targetfile;
 
-    QApplication  app(argc, argv);
+    QCoreApplication  app(argc, argv);
 
     for ( int i = 1; i < argc; ++i ) {
         if ( strcmp( argv[ i ], "-o" ) == 0 ) {

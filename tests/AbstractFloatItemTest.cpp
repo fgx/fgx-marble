@@ -8,8 +8,8 @@
 // Copyright 2013       Bernhard Beschow <bbeschow@cs.tu-berlin.de>
 //
 
-#include <QtTest/QtTest>
-#include <QtCore/qmetatype.h>
+#include <QtTest>
+#include <qmetatype.h>
 
 #include "MarbleModel.h"
 #include "PluginManager.h"
@@ -100,7 +100,7 @@ void AbstractFloatItemTest::newInstance_data()
     QTest::addColumn<const AbstractFloatItem *>( "factory" );
 
     foreach ( const AbstractFloatItem *factory, m_factories ) {
-        QTest::newRow( factory->nameId().toAscii() ) << factory;
+        QTest::newRow( factory->nameId().toLatin1() ) << factory;
     }
 }
 
@@ -121,7 +121,7 @@ void AbstractFloatItemTest::setSettings_data()
     QTest::addColumn<const AbstractFloatItem *>( "factory" );
 
     foreach ( const AbstractFloatItem *factory, m_factories ) {
-        QTest::newRow( factory->nameId().toAscii() ) << factory;
+        QTest::newRow( factory->nameId().toLatin1() ) << factory;
     }
 }
 
@@ -156,7 +156,7 @@ void AbstractFloatItemTest::setPosition_data()
     QTest::addColumn<const AbstractFloatItem *>( "factory" );
 
     foreach ( const AbstractFloatItem *factory, m_factories ) {
-        QTest::newRow( factory->nameId().toAscii() ) << factory;
+        QTest::newRow( factory->nameId().toLatin1() ) << factory;
     }
 }
 

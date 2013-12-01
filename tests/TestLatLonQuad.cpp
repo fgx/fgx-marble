@@ -8,8 +8,8 @@
 // Copyright 2013      Dennis Nienhüser <earthwings@gentoo.org>
 //
 
-#include <QtCore/QObject>
-#include <QtTest/QtTest>
+#include <QObject>
+#include <QtTest>
 
 #include "TestUtils.h"
 #include <GeoDataDocument.h>
@@ -32,7 +32,7 @@ private slots:
 
 void TestLatLonQuad::initTestCase()
 {
-    MarbleDebug::enable = true;
+    MarbleDebug::setEnabled( true );
 }
 
 void TestLatLonQuad::simpleParseTest()

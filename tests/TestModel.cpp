@@ -9,8 +9,8 @@
 // Copyright 2013      Sanjiban Bairagya <sanjiban22393@gmail.com>
 //
 
-#include <QtCore/QObject>
-#include <QtTest/QtTest>
+#include <QObject>
+#include <QtTest>
 
 #include <GeoDataParser.h>
 #include <GeoDataDocument.h>
@@ -32,7 +32,7 @@ private slots:
 };
 void TestModel::initTestCase()
 {
-    MarbleDebug::enable = true;
+    MarbleDebug::setEnabled( true );
 }
 
 void TestModel::simpleParseTest()

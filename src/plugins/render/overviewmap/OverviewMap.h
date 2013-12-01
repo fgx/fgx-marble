@@ -11,12 +11,12 @@
 #ifndef MARBLEOVERVIEWMAP_H
 #define MARBLEOVERVIEWMAP_H
 
-#include <QtCore/QObject>
-#include <QtCore/QHash>
-#include <QtGui/QColor>
-#include <QtGui/QAbstractButton>
-#include <QtSvg/QSvgWidget>
-#include <QtSvg/QSvgRenderer>
+#include <QObject>
+#include <QHash>
+#include <QColor>
+#include <QAbstractButton>
+#include <QSvgWidget>
+#include <QSvgRenderer>
 
 #include "GeoDataLatLonAltBox.h"
 #include "AbstractFloatItem.h"
@@ -38,6 +38,7 @@ namespace Marble
 class OverviewMap : public AbstractFloatItem, public DialogConfigurationInterface
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.OverviewMap" )
     Q_INTERFACES( Marble::RenderPluginInterface )
     Q_INTERFACES( Marble::DialogConfigurationInterface )
     MARBLE_PLUGIN( OverviewMap )

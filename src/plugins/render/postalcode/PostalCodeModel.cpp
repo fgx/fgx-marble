@@ -23,11 +23,15 @@
 #include "Planet.h"
 
 // Qt
-#include <QtCore/QString>
-#include <QtCore/QUrl>
-#include <QtScript/QScriptEngine>
-#include <QtScript/QScriptValue>
-#include <QtScript/QScriptValueIterator>
+#include <QString>
+#include <QUrl>
+#include <QScriptEngine>
+#include <QScriptValue>
+#include <QScriptValueIterator>
+
+#if QT_VERSION >= 0x050000
+  #include <QUrlQuery>
+#endif
 
 using namespace Marble;
 
@@ -51,10 +55,19 @@ void PostalCodeModel::getAdditionalItems( const GeoDataLatLonAltBox& box,
     double const radius = qMin<double>( 30.0, box.height() * marbleModel()->planet()->radius() * METER2KM );
 
     QUrl geonamesUrl( "http://ws.geonames.org/findNearbyPostalCodesJSON" );
+#if QT_VERSION < 0x050000
     geonamesUrl.addQueryItem( "lat", QString::number( lat ) );
     geonamesUrl.addQueryItem( "lng", QString::number( lon ) );
     geonamesUrl.addQueryItem( "radius", QString::number( radius ) );
     geonamesUrl.addQueryItem( "maxRows", QString::number( number ) );
+#else
+    QUrlQuery urlQuery;
+    urlQuery.addQueryItem( "lat", QString::number( lat ) );
+    urlQuery.addQueryItem( "lng", QString::number( lon ) );
+    urlQuery.addQueryItem( "radius", QString::number( radius ) );
+    urlQuery.addQueryItem( "maxRows", QString::number( number ) );
+    geonamesUrl.setQuery( urlQuery );
+#endif
 
     downloadDescriptionFile( QUrl( geonamesUrl ) );
 }

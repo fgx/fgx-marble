@@ -20,14 +20,14 @@
 #include "ui_CacheDetailsDialog.h"
 #include "OpenCachingComModel.h"
 
-#include <QtGui/QFontMetrics>
-#include <QtGui/QPixmap>
+#include <QFontMetrics>
+#include <QPixmap>
 #include <QAction>
 #include <QDialog>
 #include <QDateTime>
 #include <QFile>
-#include <QtScript/QScriptEngine>
-#include <QtScript/QScriptValue>
+#include <QScriptEngine>
+#include <QScriptValue>
 #include <QDesktopServices>
 
 #include <QDebug>
@@ -35,10 +35,10 @@
 namespace Marble
 {
 
-OpenCachingComItem::OpenCachingComItem( QVariantMap cache, QObject *parent )
+OpenCachingComItem::OpenCachingComItem( QVariantMap cache, OpenCachingComModel *parent )
     : AbstractDataPluginItem( parent )
      , m_ui( 0 )
-     , m_model( qobject_cast<OpenCachingComModel*>(parent) )
+     , m_model( parent )
      , m_cache( cache )
      , m_action( new QAction( this ) )
 {

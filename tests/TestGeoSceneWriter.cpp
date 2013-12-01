@@ -8,11 +8,11 @@
 // Copyright 2011 Utku Aydın <utkuaydin34@gmail.com>
 //
 
-#include <QtCore/QObject>
-#include <QtCore/QTemporaryFile>
-#include <QtTest/QTest>
-#include <QtCore/QDebug>
-#include <QtCore/QDir>
+#include <QObject>
+#include <QTemporaryFile>
+#include <QTest>
+#include <QDebug>
+#include <QDir>
 
 #include "GeoSceneDocument.h"
 #include "GeoSceneHead.h"
@@ -92,7 +92,7 @@ void TestGeoSceneWriter::initTestCase()
             QVERIFY( file.open( QIODevice::ReadOnly ) );
 
             //Parser and verify
-            QVERIFY2( parser->read( &file ), filename.toAscii() );
+            QVERIFY2( parser->read( &file ), filename.toLatin1() );
 
             parsers.insert( dataDir.filePath(filename), parserPointer );
 

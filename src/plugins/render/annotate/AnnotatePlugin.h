@@ -20,8 +20,8 @@
 #include "RenderPlugin.h"
 #include "SceneGraphicsItem.h"
 
-#include <QtCore/QObject>
-#include <QtGui/QErrorMessage>
+#include <QObject>
+#include <QErrorMessage>
 
 class QNetworkAccessManager;
 class QNetworkReply;
@@ -43,6 +43,7 @@ class GeoDataLineString;
 class AnnotatePlugin :  public RenderPlugin
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA( IID "org.kde.edu.marble.AnnotatePlugin" )
     Q_INTERFACES( Marble::RenderPluginInterface )
     MARBLE_PLUGIN( AnnotatePlugin )
 

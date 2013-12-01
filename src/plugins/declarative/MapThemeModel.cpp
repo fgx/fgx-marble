@@ -15,9 +15,9 @@
 #include "GeoSceneHead.h"
 #include "GeoSceneZoom.h"
 
-#include <QtCore/QModelIndex>
-#include <QtCore/QDebug>
-#include <QtGui/QStandardItemModel>
+#include <QModelIndex>
+#include <QDebug>
+#include <QStandardItemModel>
 
 MapThemeModel::MapThemeModel( QObject *parent ) : QSortFilterProxyModel( parent ),
     m_themeManager( new Marble::MapThemeManager( this ) ), m_mapThemeFilters( MapThemeModel::AnyTheme )
@@ -26,18 +26,30 @@ MapThemeModel::MapThemeModel( QObject *parent ) : QSortFilterProxyModel( parent 
     handleChangedThemes();
     connect( m_themeManager, SIGNAL(themesChanged()), this, SLOT(handleChangedThemes()) );
 
-    QHash<int,QByteArray> roleNames = this->roleNames();
+    QHash<int,QByteArray> roleNames;
+    roleNames[ Qt::DisplayRole ] = "display";
     roleNames[ Qt::DecorationRole ] = "icon";
     roleNames[ Qt::UserRole + 1 ] = "mapThemeId";
+#if QT_VERSION < 0x050000
     setRoleNames( roleNames );
+#else
+    m_roleNames = roleNames;
+#endif
 }
 
-int MapThemeModel::count()
+int MapThemeModel::count() const
 {
     return rowCount();
 }
 
-QString MapThemeModel::name( const QString &id )
+#if QT_VERSION >= 0x050000
+QHash<int, QByteArray> MapThemeModel::roleNames() const
+{
+    return m_roleNames;
+}
+#endif
+
+QString MapThemeModel::name( const QString &id ) const
 {
     for ( int i=0; i<rowCount(); ++i ) {
         if ( data( index( i, 0, QModelIndex() ), Qt::UserRole + 1 ).toString() == id ) {
@@ -47,7 +59,7 @@ QString MapThemeModel::name( const QString &id )
     return QString();
 }
 
-int MapThemeModel::indexOf(const QString &id)
+int MapThemeModel::indexOf( const QString &id ) const
 {
     for ( int i=0; i<rowCount(); ++i ) {
         if ( data( index( i, 0, QModelIndex() ), Qt::UserRole + 1 ).toString() == id ) {
@@ -106,14 +118,15 @@ void MapThemeModel::handleChangedThemes()
     m_streetMapThemeIds.clear();
     QStringList const themes = m_themeManager->mapThemeIds();
     foreach( const QString &theme, themes ) {
-        Marble::GeoSceneDocument* document = m_themeManager->loadMapTheme( theme );
+        Marble::GeoSceneDocument* document = Marble::MapThemeManager::loadMapTheme( theme );
         if ( document && document->head()->zoom()->maximum() > 3000 ) {
             m_streetMapThemeIds << document->head()->mapThemeId();
             delete document;
         }
     }
 
-    reset();
+    beginResetModel();
+    endResetModel();
 }
 
 #include "MapThemeModel.moc"

@@ -16,12 +16,13 @@
 #include "MarbleDeclarativeWidget.h"
 #include "PositionSource.h"
 #include "Bookmarks.h"
+#include "CloudSync.h"
+#include "cloudsync/MergeItem.h"
 #include "Tracking.h"
 #include "Routing.h"
 #include "Navigation.h"
 #include "Search.h"
 #include "RouteRequestModel.h"
-#include "RelatedActivities.h"
 #include "Settings.h"
 #include "MapThemeModel.h"
 #include "NewstuffModel.h"
@@ -33,8 +34,16 @@
 #include "RenderPlugin.h"
 #include "DeclarativeDataPlugin.h"
 
-#include <QtDeclarative/qdeclarative.h>
-#include <QtDeclarative/QDeclarativeEngine>
+#if QT_VERSION < 0x050000
+  #include <qdeclarative.h>
+  #include <QDeclarativeEngine>
+  typedef QDeclarativeEngine QQmlEngine;
+  typedef QDeclarativeComponent QQmlComponent;
+#else
+  #include <QtQml/qqml.h>
+  #include <QQmlEngine>
+  #include <QQmlContext>
+#endif
 
 void MarbleDeclarativePlugin::registerTypes( const char * )
 {
@@ -49,8 +58,9 @@ void MarbleDeclarativePlugin::registerTypes( const char * )
     qmlRegisterType<Routing>( uri, 0, 11, "Routing" );
     qmlRegisterType<Navigation>( uri, 0, 11, "Navigation" );
     qmlRegisterType<Search>( uri, 0, 11, "Search" );
+    qmlRegisterType<CloudSync>( uri, 0, 11, "CloudSync" );
+    qmlRegisterType<Marble::MergeItem>( uri, 0, 11, "MergeItem" );
     qmlRegisterType<RouteRequestModel>( uri, 0, 11, "RouteRequestModel" );
-    qmlRegisterType<RelatedActivities>( uri, 0, 11, "RelatedActivities" );
     qmlRegisterType<Settings>( uri, 0, 11, "Settings" );
 
     qmlRegisterType<MarbleWidget>( uri, 0, 11, "MarbleWidget" );
@@ -67,7 +77,7 @@ void MarbleDeclarativePlugin::registerTypes( const char * )
     qmlRegisterUncreatableType<Marble::RenderPlugin>( uri, 0, 11, "RenderPlugin", "Do not create" );
 }
 
-void MarbleDeclarativePlugin::initializeEngine( QDeclarativeEngine *engine, const char *)
+void MarbleDeclarativePlugin::initializeEngine( QQmlEngine *engine, const char *)
 {
     engine->addImageProvider( "maptheme", new MapThemeImageProvider );
     // Register the global Marble object. Can be used in .qml files for requests like Marble.resolvePath("some/icon.png")
