@@ -1,0 +1,99 @@
+
+2010-08-19  Bernhard Beschow    <bbeschow@cs.tu-berlin.de>
+
+* The method ViewParams *viewParams() has been removed from MarbleMap in favor of ViewportParams *viewport().
+  Setting and getting the MapQuality can now be done using MarbleMap::setMapQuality() and MarbleMap::mapQuality().
+  Access to the current AbstractProjection is still possible using MarbleMap::viewport()->currentProjection().
+  MarbleMap::viewParams()->propertyAvailable() can now be reached under MarbleMap::model()->mapTheme()->settings()->propertyAvailable().
+  The canvas and coast images are not accessible any longer by inention. Use MarbleMap::mapScreenShot() to access the resulting map, or implement a plugin to draw onto the map.
+
+* Introduce MarbleWidget::viewport().
+  Use MarbleWidget::viewport() rather than MarbleWidget::map()->viewport().
+  Use MarbleWidget::viewport()->mapCoversViewport() rahter than MarbleWidget::map()->mapCoversViewport().
+
+* From MarbleWidget remove setProxy(), proxyHost(), proxyPort(), user(), password().
+  These methods haven't been meaningful to MarbleWidget and have been commented to be removed a long time ago.
+
+2010-09-30  Bernhard Beschow <bbeschow@cs.tu-berlin.de>
+
+* Move MarbleMap::home(...) and MarbleMap::setHome(...) to MarbleModel.
+
+2010-10-01  Bernhard Beschow <bbeschow@cs.tu-berlin.de>
+
+* Remove MarbleMap::goHome().
+  Use MarbleMap::flyTo(home), where home is the home position.
+
+2010-10-01 Dennis Nienhüser <earthwings@gentoo.org>
+
+* RenderPlugin::pluginInstance() has been renamed RenderPlugin::newInstance to be consistent with other plugin types.
+  You only need to change your code if you're not using the MARBLE_PLUGIN macro in custom RenderPlugins.
+
+2010-10-05  Bernhard Beschow <bbeschow@cs.tu-berlin.de>
+
+* Remove MarbleMap::zoom{In, Out}().
+  For applications using MarbleWidget, using its zoomIn() and zoomOut() slots is preferred.
+  For applications that need to operate on MarbleMap directly, there is still MarbleMap::zoomViewBy( zoomAmount ).
+
+* Remove MarbleMap::moveStep() and MarbleMap::move{Left, Right, Up, Down}().
+  For applications using MarbleWidget, using its corresponding methods and slots is preferred.
+  For applications that need to operate on MarbleMap directly, use MarbleMap::rotateBy( ... ). See MarbleWidgetPrivate::moveByStep() for an example.
+
+* Remove Marble{Map, Widget}::{north,south}PolePosition().
+  Use Marble{Map, Widget}::screenCoordinates( 0.0, poleLat, ... ) instead, where poleLat is +90 for the north pole and -90 for the south pole.
+  Feel free to request constants like Marble::NorthPole and Marble::SouthPole if you use the screen coordinates of the poles in your application.
+
+2010-10-05  Bernhard Beschow <bbeschow@cs.tu-berlin.de>
+
+* Remove or make private Marble{Map, Widget}::{needsUpdate(), setNeedsUpdate(), updateChangedMap()}.
+  There is no need to call these methods any more since they are invoked internally when needed.
+  It should be safe to remove any code that calls these methods from outside MarbleMap/MarbleWidget.
+
+2010-11-13  Bernhard Beschow <bbeschow@cs.tu-berlin.de>
+
+* Remove ViewParams::set{Canvas, Coast}Image. Introduce ViewParams::setSize().
+  Instead of manually setting the canvas and coast images to the same size already specified in ViewParams::ViewportParams (using setCanvasImage and setCoastImage),
+  calling setSize will update the viewportParam's and the images sizes and keep them synchronized.
+
+2010-11-29  Bernhard Beschow <bbeschow@cs.tu-berlin.de>
+
+* Remove MarbleModel::textureMapper().
+  AbstractScanlineTextureMapper isn't exported, so there shouldn't have been any usages outside libmarblewidget.
+
+* Remove MarbleModel::setupTextureMapper( Projection ).
+  Use {MarbleMap, MarbleWidget}::setProjection( Projection ) instead.
+
+* Remove MarbleModel::paintTile( StackedTile*, const GeoSceneTexture * ).
+  This method was internal. If you really need it, call {MarbleMap, MarbleWidget}::setShowTileId( true ), which will activate drawing the tile id onto each tile.
+
+* Remove MarbleModel::paintGlobe().
+  Use MarbleMap::paint() or MarbleWidget::update()/repaint().
+
+* Remove MarbleModel::placemarkLayout().
+  The class PlacemarkLayout isn't exported, so there shouldn't be any conflicts.
+
+* Remove the following methods from MarbleModel (use the same methods from MarbleMap or MarbleWidget):
+  - renderPlugins()
+  - floatItems()
+  - dataPlugins()
+  - whichItemAt( const QPoint& )
+  - addLayer( LayerInterface * )
+  - removeLayer( LayerInterface * )
+  - measureTool()
+  - tileZoomLevel()
+  - reloadMap()
+  - backgroundVisible()
+  - setBackgroundVisible( bool )
+  - whichFeatureAt( const QPoint& )
+  - downloadRegion( QString const &, QVector<TileCoordsPyramid> const & )
+
+* Remove the following slots from MarbleModel (use the same slots from MarbleMap or MarbleWidget):
+  - clearVolatileTileCache()
+  - setVolatileTileCacheLimit( quint64 )
+
+* Remove the slot MarbleModel::update().
+  Use {MarbleMap, MarbleWidget}::updateSun() instead.
+
+* Remove the following signals from MarbleModel (use the same signals from MarbleMap or MarbleWidget):
+  - tileLevelChanged( int )
+  - pluginSettingsChanged()
+  - renderPluginInitialized( RenderPlugin * )

@@ -1,0 +1,24 @@
+- Apply "Level of details (LOR)" while parsing kml placemarks
+
+- Parsing of kml document from QIODevice
+
+- Integration of KMLDocument with PlaceMarkPainter for initial support of kml placemarks
+
+- Apply KMLFolder object to act as a layer
+
+- Initial support of KML style objects (icon style, label style)
+
+- Integration with Digikam. This includes test of kml output of Digikam on Marble
+
+- Sort placemarks while parsing them from input kml stream. This will speed up drawing of placemarks. (Regionator)
+
+- Serialization of in memory kml document structure to disk cache. Introduce options like:
+    * memory cache size
+    * disk cache size
+this will allow to store a big kml documents and efficient memory usage.
+
+- Show list view on the left that indicates opened kml/gpx files. List view should only
+  appear if there are more than one opened file.
+
+Enhancements:
+- Use pointer to character parsing function instead of switching m_phase in KML parsers to speed up parsing

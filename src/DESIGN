@@ -1,0 +1,268 @@
+This file describes the design and structure of Marble
+
+1. The main structure
+=====================
+
+Marble, the application, currently consists two main widgets:
+  - a MarbleWidget      that contains the view of the world, and
+  - a MarbleControlBox  that controls it.
+
+The MarbleWidget is a view for the model represented by the MarbleModel
+class, which contains all the data necessary for manipulating and
+displaying the map.
+
+
+1.1  Library
+------------
+
+The MarbleWidget is a very complex widget with lots of helper classes.
+MarbleWidget is contained in a library with just a few exported
+classes.  Here we will present the exported classes of the library:
+
+ - MarbleWidget
+ - MarbleModel
+ - MarbleControlBox
+
+These classes comprise the main interface to the Marble library.
+
+
+ - PlacemarkModel
+ - KAtlasThemeSelectView
+ - LegendBrowser
+ - SearchListView
+ - (MarbleNavigator)
+
+These are mainly parts of the more complex MarbleControlBox.  The
+individual controls inside MarbleControlBox can be used by themselves
+if you want to create a simpler user interface.
+
+NOTE: MarbleNavigator is currently not part of the library, but it
+      will be moved there before the next release.
+
+
+ - MapTheme
+
+This class contains a set of colors, an icon some other misc data that
+will control the appearance of the map.  By defining a new MapTheme,
+you can give a new appearance of an already existing map.
+
+
+ - KAtlasAboutDialog (to be renamed into MarbleAboutDialog)
+
+This is a special utility class which displays some information about
+Marble, shows the authors and will also show the license in the
+future.
+
+
+
+2. The World Model
+==================
+
+The model of the world consists of 3 different parts, which can be
+viewed as separate layers:
+
+ - A pixel based area that is split up into tiles.  Depending on the
+   dataset, these tiles are produced from different data sources,
+   either from satellite scans or from photographs.  The tiles are
+   stored in several different resolutions that are used in different
+   zoom levels.  The tiles are automatically generated the first time
+   that the application is started, and are stored into
+   $HOME/.marble/data/maps.  For packaging purposes or to offer the
+   same data to multiple users you can move these tiles into the
+   system directory where marble gets installed (e.g.
+   /usr/share/apps/marble/data/maps).
+
+   The main class of the tiles layer is the TextureMapper, which maps
+   a tiled texture onto the projected sphere.
+
+ - Vectors that represent different kinds of borders -- geographical
+   or political -- or features.  Geographical borders can be
+   coastlines, islands or lakes, but also rivers.  Political borders
+   are mostly countries, but also the states of the USA.  Special
+   features include the grid of lines that show the latitude and
+   longitude as well as the tropics and arctics.
+
+   The main classes of the vectors are the GeoPolygon and the PntMap,
+   which contain the actual vectors, but also a bounding box
+   that specifies which area is being covered by each polygon.
+
+ - Points of interest, represented by the Placemark class.  Right now
+   these are mostly cities, but also some mountains and sea deeps.
+
+   The Placemark has a somewhat arbitrary selection of properties
+   which comes from the Google Earth KML format.  This will be
+   restructured in future versions.  Another important class is the
+   PlacemarkContainer which collects a number of Placemarks into a
+   container, just like the name suggests.  A third level is provided
+   by the PlacemarkManager class which manages several
+   PlacemarkContainers (currently just one) and also imports and
+   exports it to/from files in various file formats.
+
+
+For most maps, these 3 layers are just painted on top of each other in
+simple bottom top order.  However, the Topographical Atlas View (the
+default view!)  provides a special map in terms of composition:
+
+   The Topographical Atlas View "merges" the Texture (which contains
+   the digital elevation data) and a Vector Layer to create a
+   recolorized bumpmapped layer via the TextureColorizer class.
+
+All map views and their use of layers get specified in a *.dgml XML
+file.  The source format for the Placemark layer is Google Earth's KML
+file format which gets parsed and cached into a temporary binary file
+(.cache) for faster follow-up reading.
+
+
+2.1 The Tile System
+-------------------
+
+
+FIXME: To be written...
+
+
+2.2 The Vector System
+---------------------
+
+FIXME: To be written...
+
+FIXME: Explain the way nodes get filtered e.g. by ClipPainter.
+
+FIXME: Explain the differences between the GeoPolygon and the
+       ScreenPolygon, and how they interact.  Also the PntMap and the
+       VectorMap.
+
+
+2.3 Placemarks
+--------------
+
+FIXME: To be written...
+
+FIXME: Explain how Placemark labels are placed so they don't cover each
+other.
+
+
+3. The Painting Process
+=======================
+
+FIXME: To be written...
+
+
+4. Library
+==========
+
+This section describes the library in more detail than the overview
+above, including the internal classes that are not exported to the
+external applications.  This section is for developers that want to
+develop Marble itself, and not just use the classes in his/her own
+application.
+
+
+4.1 The Basic Building Blocks
+-----------------------------
+
+Quaternion
+GeoDataPoint, GeoPolygon, PntMap
+ScreenPolygon, VectorMap
+
+
+4.2. Class Overview
+-------------------
+
+Here follows now a list of classes, their roles and how they interact.
+
+Basic classes
+- - - - - - -
+
+Quaternion      A simple implementation of the mathematical concept
+                quaternion.
+
+GeoDataPoint    A point on the earth, (lon, lat)
+GeoPolygon      A path or polygon on the earth, consisting of a vector
+                of GeoDataPoints
+PntMap          A collection of GeoPolygons ( QVector<GeoPolygon *> )
+                FIXME: Rename and move from GeoPolygon.h into own file.
+
+ScreenPolygon   A path or polygon on the screen. Uses screen
+                coordinates.  Uses floats due to antialiasing.
+VectorMap       A Vector of ScreenPolygons.
+                Rename   FIXME
+GridMap         The grid of lat-lon lines on the map.
+                Another Vector of ScreenPolygons. Perhaps it should
+                inherit or contain a VectorMap.
+
+Placemark       A point on the earth with some additional data. Can be
+                selected and manipulated. Has a name. Today mostly
+                used for cities of different size.
+                At this point somewhat arbitrary in its choice of
+                properties.  Contains (among others):
+                 - Coordinate (GeoDataPoint)
+                 - Role (QChar) -- city, capital, etc
+                 - Population (int)
+                 - Description (QString)
+                 - Countrycode (QString)
+                 - View stuff (selected, labelstring, boundingbox, etc)
+
+PlaceContainer  A list of Placemarks ( QVector<Placemark *> )
+
+
+Model / View
+- - - - - - -
+
+MarbleModel     The main model.  Contains (among others):
+                 - MapTheme
+                 - GridMap
+                 - VectorComposer
+                 - PlacemarkManager
+                 - PlacemarkModel
+
+VectorComposer  Manages the different vector sub-layers which consist
+                of coastlines, islands, lakes, glaciers, rivers
+                as well as borders for the countries and the US
+                States.  These are all stored in PntMaps, one for each
+                type.  FIXME: Change Name.
+
+MarbleWidget    The view of a MarbleModel.
+
+
+Widgets
+-------
+KAtlasControl   The main window.  Contains a MarbleWidget and a
+                MarbleControlBox.
+
+
+Unsorted
+--------
+
+class ClipPainter;
+class HttpFetchFile;
+class KAtlasAboutDialog : public QDialog, private Ui::katlasAboutDialog {
+class KAtlasCrossHair : public QObject {
+class MarbleDirs
+class KAtlasFlag : public QObject {
+class KAtlasMapScale : public QObject {
+class KAtlasThemeSelectView : public QListView {
+class KAtlasTileCreatorDialog : public QDialog, private Ui::KAtlasTileCreatorDialog {
+class KAtlasTileCreatorDialog: public Ui_KAtlasTileCreatorDialog {};
+class KAtlasViewInputHandler;
+class KAtlasViewPopupMenu;
+class KAtlasWindRose : public QObject {
+class KAtlasXmlHandler : public QXmlDefaultHandler {
+class MapTheme : public QObject
+class MeasureTool;
+class PlaceFolder : public QVector<Placemark*> {
+class PlacemarkInfoDialog: public Ui_PlacemarkInfoDialog {};
+class PlacemarkManager;
+class PlacemarkModel : public QAbstractListModel {
+class PlacemarkPainter : public QObject {
+class QAbstractItemModel;
+class QMenu;
+class QStandardItemModel;
+class SearchComboBox : public QComboBox {
+class SearchListView : public QListView {
+class TextureColorizer;
+class TextureLoader;
+class TextureMapper {
+class TextureTile;
+class TileCreator : public QObject {
+class TinyWebBrowser : public QTextBrowser {
+class katlasAboutDialog: public Ui_katlasAboutDialog {};
