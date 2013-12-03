@@ -1,5 +1,119 @@
-Please use 
+2013/12/03 18:19:19 - Geoff
 
-https://projects.kde.org/projects/kde/kdeedu/marble/activity 
+    * Changes to building marble in native windows
+      GIT: git@github.com:fgx/fgx-marble.git
+      SOURCE: F:\FG\18\marble
+      BUILD: F:\FG\18\build-marble\build-marble.bat
+      Note: As in diff -u, '-' is line removed, and '+' is line added
+      A: Some changes made in the CMake build files
+      1: # 20131203 - root CMakeLists.txt
+     (a) Turn OFF QTDBUS, a unix thing only to avoid lots of warnings
+      -  set( QT_USE_QTDBUS        ON )
+      +  if (WIN32)
+      +    set( QT_USE_QTDBUS        OFF )
+      +  else ()
+      +    set( QT_USE_QTDBUS        ON )
+      +  endif ()
+     (b) Try to overcome the linker tool race condtion on EXE
+      +    if (MSVC)
+      +        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
+      +    endif ()
+      (c) The comment says it all, and add an APPS_INSTALL_DIR if NOT defined. This is for marble-qt.desktop file
+      -    set(CMAKE_MODULES_INSTALL_PATH ${CMAKE_ROOT}/Modules)
+      +    # This seems a BAD idea, writting to the CMake install directory
+      +    ### set(CMAKE_MODULES_INSTALL_PATH ${CMAKE_ROOT}/Modules)
+      +    set(CMAKE_MODULES_INSTALL_PATH ${CMAKE_INSTALL_PREFIX}/CMake)
+      +    if (NOT APPS_INSTALL_DIR)
+      +        set(APPS_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/share/marble)
+      +    endif ()
+      2: src/apps/CMakeLists.txt file
+      Comment makes the problem clear
+      +if (NOT WIN32) # TODO: problem unresolved keyPressEvent
+       add_subdirectory(marble-mobile)
+      +endif ()
+      3: src/apps/marble-qt/CMakeLists.txt file
+      (a) Correct the path to the marble.rc file
+       if(MSVC)
+      -  set(marble_SRCS ${marble_SRCS} marble.rc)
+      +  set(marble_SRCS ${marble_SRCS} ../marble-kde/marble.rc)
+       endif(MSVC)
+       if(MINGW)
+      -   QT4_ADD_RESOURCES2(marble_SRCS marble.rc)
+      +   QT4_ADD_RESOURCES2(marble_SRCS ../marble-kde/marble.rc)
+       endif(MINGW)
+      (b) Under WIN32 add "d" for Debug version, otherwise debug/release will be 
+        overwritten on install
+      +    set_target_properties(marble-qt PROPERTIES DEBUG_POSTFIX d )
+      (c) Again under Windows, install to 'bin'
+       if(WIN32)
+      -    install (TARGETS marble-qt RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX})
+      +    # 20131203 - correct to a 'bin' install for windows
+      +    install (TARGETS marble-qt RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+       else(WIN32)
+      (d) Since pt 3:(c) the EXE is now installed in .../bin, need to also change the install of the plugins.
+      In qtmain.ccp it uses the code -
+      #ifdef Q_WS_WIN
+          QApplication::addLibraryPath( QApplication::applicationDirPath() 
+              + QDir::separator() + "plugins" );
+      #endif
+      so it EXPECTS the 'plugins' to be installed in the <EXE_PATH>\plugins
+      Else need to reset 3:(c)... but the EXE should be in 'bin' on windows!!!
+      And similarly for the 'data' path... but this 'data' path CAN be set 
+      by the command line argument -
+        "  --marbledatapath=<path> .... Overwrite the compile-time path to map themes and other data"
+      And that WORKED, so can leave the 'data' in ${CMAKE_INSTALL_PREFIX}/data,
+      and run marble-qt giving the corrected data path...
+      Now the 'plugins' install can be changed in root CMakeLists.txt by -
+        if (MSVC)
+            set(plugin_dir bin/plugins)
+        else ()
+            set(plugin_dir plugins)
+        endif ()
+      AND, it should be NOTED that this can be OVERRIDDEN by a cmake 
+      defines -
+      if (NOT MARBLE_DATA_PATH)
+        set (MARBLE_DATA_PATH ${data_dir})
+      endif (NOT MARBLE_DATA_PATH)
+      if (NOT MARBLE_PLUGIN_PATH)
+        set (MARBLE_PLUGIN_PATH ${plugin_dir})
+      endif (NOT MARBLE_PLUGIN_PATH)
+      if (NOT MARBLE_DATA_INSTALL_PATH)
+        set (MARBLE_DATA_INSTALL_PATH ${MARBLE_DATA_PATH})
+      endif (NOT MARBLE_DATA_INSTALL_PATH)
+      if (NOT MARBLE_PLUGIN_INSTALL_PATH)
+        set (MARBLE_PLUGIN_INSTALL_PATH ${MARBLE_PLUGIN_PATH})
+      endif (NOT MARBLE_PLUGIN_INSTALL_PATH)
+      4: src/apps/marble-ui/CMakeLists.txt
+      As above, correct path the marble.rc file
+       if(MSVC)
+      -  set(marble_SRCS ${marble_SRCS} marble.rc)
+      +  set(marble_SRCS ${marble_SRCS} ../marble-kde/marble.rc)
+       endif(MSVC)
+       if(MINGW)
+      -   QT4_ADD_RESOURCES2(marble_SRCS marble.rc)
+      +   QT4_ADD_RESOURCES2(marble_SRCS ../marble-kde/marble.rc)
+       endif(MINGW)
+      5: src/lib/marble/CMakeLists.txt file
+      Correct some windows install paths as per the comment
+       if(WIN32 AND QTONLY)
+      -  install(TARGETS marblewidget RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX})
+      +  # NOTE: LIB goes to 'lib', but DLL goes to 'bin'
+      +  install(TARGETS marblewidget
+      +    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+      +    ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+      +    RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+       else(WIN32 AND QTONLY)
+      B: One code changes
+      1: correct the path in the src/apps/marble-kde/marble.rc file
+      -IDI_ICON1		ICON		DISCARDABLE	"../data/ico/marble.ico"
+      +IDI_ICON1		ICON		DISCARDABLE	"../../../data/ico/marble.ico"
+      # eof
 
-to track changes in Marble.
+2013/12/02 16:10:30 - Sai
+
+    * Fork of git marble tag v4.10.97 (KDE/4.9)
+      The original marble used
+      https://projects.kde.org/projects/kde/kdeedu/marble/activity 
+      to track changes in Marble.
+      
+# eof

@@ -1,6 +1,8 @@
 add_subdirectory(marble-ui)
 add_subdirectory(marble-qt)
+if (NOT WIN32) # TODO: problem unresolved keyPressEvent
 add_subdirectory(marble-mobile)
+endif ()
 
 if (NOT QTONLY)
   add_subdirectory(marble-kde)

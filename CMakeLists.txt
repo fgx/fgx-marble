@@ -1,3 +1,5 @@
+# 20131203 - root CMakeLists.txt
+
 project(marble)
 
 ####################################################
@@ -44,7 +46,11 @@ if(QT4_FOUND)
   set( QT_USE_QTSVG         ON )
   set( QT_USE_QTDECLARATIVE ON )
   set( QT_USE_QTSQL         ON )
-  set( QT_USE_QTDBUS        ON )
+  if (WIN32)
+    set( QT_USE_QTDBUS        OFF )
+  else ()
+    set( QT_USE_QTDBUS        ON )
+  endif ()
   include( ${QT_USE_FILE} )
   marble_set_package_properties( Qt4 PROPERTIES DESCRIPTION "cross-platform application framework" )
   marble_set_package_properties( Qt4 PROPERTIES URL "http://qt.digia.com/" )
@@ -98,6 +104,9 @@ if(QTONLY)
   # Use M_PI under Windows
   if( WIN32 )
     add_definitions( -D_USE_MATH_DEFINES )
+    if (MSVC)
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
+    endif ()
   endif( WIN32 )
 endif (QTONLY)
 
@@ -219,8 +228,17 @@ endif (QTONLY)
 if(WIN32)
   if(QTONLY)
     set(data_dir data)
-    set(plugin_dir plugins)
-    set(CMAKE_MODULES_INSTALL_PATH ${CMAKE_ROOT}/Modules)
+    if (MSVC)
+        set(plugin_dir bin/plugins)
+    else ()
+        set(plugin_dir plugins)
+    endif ()
+    # This seems a BAD idea, writting to the CMake install directory
+    ### set(CMAKE_MODULES_INSTALL_PATH ${CMAKE_ROOT}/Modules)
+    set(CMAKE_MODULES_INSTALL_PATH ${CMAKE_INSTALL_PREFIX}/CMake)
+    if (NOT APPS_INSTALL_DIR)
+        set(APPS_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/share/marble)
+    endif ()
   else(QTONLY)
     set(data_dir ${DATA_INSTALL_DIR}/marble/data)
     set(plugin_dir ${PLUGIN_INSTALL_DIR}/plugins/marble)
@@ -291,7 +309,8 @@ if (NOT MARBLE_PLUGIN_INSTALL_PATH)
   set (MARBLE_PLUGIN_INSTALL_PATH ${MARBLE_PLUGIN_PATH})
 endif (NOT MARBLE_PLUGIN_INSTALL_PATH)
 
-#MESSAGE( STATUS, "MARBLE_PLUGIN_INSTALL_PATH: ${MARBLE_PLUGIN_INSTALL_PATH}" )
+message( STATUS, "MARBLE_DATA_INSTALL_PATH: ${MARBLE_PLUGIN_INSTALL_PATH}" )
+message( STATUS, "MARBLE_PLUGIN_INSTALL_PATH: ${MARBLE_PLUGIN_INSTALL_PATH}" )
 
 if(WIN32)
   set (STATIC_BUILD FALSE CACHE BOOL "Link to static Qt libs (win32 only)?")
@@ -420,3 +439,5 @@ endif(QTONLY)
 include(MarbleCPackOptions)
 
 marble_feature_summary(WHAT ALL)
+
+# eof

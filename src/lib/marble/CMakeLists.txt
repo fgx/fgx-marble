@@ -1,3 +1,5 @@
+# 20131203 - src/lib/marble/CMakeLists.txt
+
 PROJECT(marblewidget)
 
 if (QTONLY)
@@ -353,7 +355,11 @@ set_target_properties(marblewidget PROPERTIES
 
 # choose the correct target install library path
 if(WIN32 AND QTONLY)
-  install(TARGETS marblewidget RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX})
+  # NOTE: LIB goes to 'lib', but DLL goes to 'bin'
+  install(TARGETS marblewidget
+    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+    RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 else(WIN32 AND QTONLY)
   if(APPLE AND QTONLY)
     install (TARGETS marblewidget LIBRARY DESTINATION
@@ -507,3 +513,5 @@ else (APPLE AND QTONLY)
     DESTINATION ${CMAKE_INSTALL_PREFIX}/include/marble
 )
 endif (APPLE AND QTONLY)
+
+# eof

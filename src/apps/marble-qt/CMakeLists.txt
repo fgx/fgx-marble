@@ -1,13 +1,15 @@
+# 20131203 - src\apps\marble-qt\CMakeLists.txt
+
 set(marble_SRCS qtmain.cpp QtMainWindow.cpp)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}
                     ${CMAKE_CURRENT_SOURCE_DIR}/../marble-ui)
 
 if(MSVC)
-  set(marble_SRCS ${marble_SRCS} marble.rc)
+  set(marble_SRCS ${marble_SRCS} ../marble-kde/marble.rc)
 endif(MSVC)
 
 if(MINGW)
-   QT4_ADD_RESOURCES2(marble_SRCS marble.rc)
+   QT4_ADD_RESOURCES2(marble_SRCS ../marble-kde/marble.rc)
 endif(MINGW)
 
 qt_wrap_ui(marble_SRCS ${marble_UI})
@@ -15,6 +17,7 @@ marble_qt4_automoc(${marble_SRCS})
 
 if (WIN32)
     add_executable (marble-qt WIN32 ${marble_SRCS})
+    set_target_properties(marble-qt PROPERTIES DEBUG_POSTFIX d )
 else (WIN32)
     if (APPLE)
         add_executable (marble-qt MACOSX_BUNDLE ${marble_SRCS})
@@ -68,7 +71,8 @@ if(STATIC_BUILD)
 endif(STATIC_BUILD)
 
 if(WIN32)
-install (TARGETS marble-qt RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX})
+    # 20131203 - correct to a 'bin' install for windows
+    install (TARGETS marble-qt RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 else(WIN32)
 if (APPLE)
   # No need for this when installing to a bundle
@@ -78,3 +82,5 @@ endif (APPLE)
 endif(WIN32)
 
 install(PROGRAMS marble-qt.desktop DESTINATION ${APPS_INSTALL_DIR})
+
+# eof
