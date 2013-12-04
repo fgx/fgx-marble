@@ -227,10 +227,19 @@ endif (QTONLY)
 
 if(WIN32)
   if(QTONLY)
-    set(data_dir data)
     if (MSVC)
-        set(plugin_dir bin/plugins)
+        # Seems better in Windows to use a FULL paths, since it is installed to 3rdParty
+        # TODO: Maybe this would be valid for all WIN32, and the UNIX port as well.
+        # There is a LOT of internal marblewidget library code for Apple
+        if (CMAKE_INSTALL_PREFIX)
+            set(data_dir ${CMAKE_INSTALL_PREFIX}/data)
+            set(plugin_dir ${CMAKE_INSTALL_PREFIX}/bin/plugins)
+        else ()
+            set(data_dir data)
+            set(plugin_dir bin/plugins)
+        endif ()
     else ()
+        set(data_dir data)
         set(plugin_dir plugins)
     endif ()
     # This seems a BAD idea, writting to the CMake install directory
