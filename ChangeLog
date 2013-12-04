@@ -1,3 +1,14 @@
+2013/12/04 15:47:58 - Geoff
+
+    * Use examples hello-marble to test runtime setting of the 
+      'data' and 'plugins' directories
+    * From the above tests changed to use absolute CMAKE_INSTALL_PREFIX 
+      path to set MARBLE_DATA_PATH and MARBLE_PLUGIN_PATH, which gets put in the cmake
+      generated marble-config.h, to provided fallback paths for 'data' and 'plugins'.
+      This is presently only done for if (WIN32 AND MSVC), but it could equally apply 
+      to other ports. There is a lot of special code in the marblewidget library to 
+      deal with the if (APPLE) case.
+
 2013/12/03 18:19:19 - Geoff
 
     * Changes to building marble in native windows
