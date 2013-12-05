@@ -1,7 +1,7 @@
-fgx-marble
-==========
+![FGx Logo]( http://fgx.github.io/fgx-cap-40x30.png) FGx Marble Read Me
+=======================================================================
 
-Contains the FGx version of Marble
+This repo contains the FGx version of Marble
 
 See also: <http://techbase.kde.org/Projects/Marble>
 
